@@ -51,9 +51,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.cbNhanVien = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txtMaHD = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -66,7 +63,6 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgr_hoadonnhap
@@ -174,7 +170,6 @@
             this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(12, 324);
             this.panel1.Name = "panel1";
@@ -183,9 +178,9 @@
             // 
             // btn_Xóa
             // 
-            this.btn_Xóa.Location = new System.Drawing.Point(322, 111);
+            this.btn_Xóa.Location = new System.Drawing.Point(313, 96);
             this.btn_Xóa.Name = "btn_Xóa";
-            this.btn_Xóa.Size = new System.Drawing.Size(80, 35);
+            this.btn_Xóa.Size = new System.Drawing.Size(89, 50);
             this.btn_Xóa.TabIndex = 8;
             this.btn_Xóa.Text = "Xóa";
             this.btn_Xóa.UseVisualStyleBackColor = true;
@@ -193,9 +188,9 @@
             // 
             // btn_Sua
             // 
-            this.btn_Sua.Location = new System.Drawing.Point(171, 111);
+            this.btn_Sua.Location = new System.Drawing.Point(171, 96);
             this.btn_Sua.Name = "btn_Sua";
-            this.btn_Sua.Size = new System.Drawing.Size(80, 35);
+            this.btn_Sua.Size = new System.Drawing.Size(80, 50);
             this.btn_Sua.TabIndex = 7;
             this.btn_Sua.Text = "Sửa";
             this.btn_Sua.UseVisualStyleBackColor = true;
@@ -203,9 +198,9 @@
             // 
             // btn_ThemHD
             // 
-            this.btn_ThemHD.Location = new System.Drawing.Point(34, 111);
+            this.btn_ThemHD.Location = new System.Drawing.Point(21, 96);
             this.btn_ThemHD.Name = "btn_ThemHD";
-            this.btn_ThemHD.Size = new System.Drawing.Size(80, 35);
+            this.btn_ThemHD.Size = new System.Drawing.Size(93, 50);
             this.btn_ThemHD.TabIndex = 6;
             this.btn_ThemHD.Text = "Thêm";
             this.btn_ThemHD.UseVisualStyleBackColor = true;
@@ -241,7 +236,7 @@
             // 
             this.panel4.Controls.Add(this.label8);
             this.panel4.Controls.Add(this.dtpNhap);
-            this.panel4.Location = new System.Drawing.Point(205, 29);
+            this.panel4.Location = new System.Drawing.Point(6, 63);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(227, 27);
             this.panel4.TabIndex = 4;
@@ -267,9 +262,9 @@
             // 
             this.panel3.Controls.Add(this.cbNhanVien);
             this.panel3.Controls.Add(this.label7);
-            this.panel3.Location = new System.Drawing.Point(19, 63);
+            this.panel3.Location = new System.Drawing.Point(6, 24);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(214, 28);
+            this.panel3.Size = new System.Drawing.Size(274, 28);
             this.panel3.TabIndex = 2;
             // 
             // cbNhanVien
@@ -277,7 +272,7 @@
             this.cbNhanVien.FormattingEnabled = true;
             this.cbNhanVien.Location = new System.Drawing.Point(70, 2);
             this.cbNhanVien.Name = "cbNhanVien";
-            this.cbNhanVien.Size = new System.Drawing.Size(141, 21);
+            this.cbNhanVien.Size = new System.Drawing.Size(201, 21);
             this.cbNhanVien.TabIndex = 1;
             // 
             // label7
@@ -288,31 +283,6 @@
             this.label7.Size = new System.Drawing.Size(63, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Nhân Viên :";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txtMaHD);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(19, 28);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(180, 28);
-            this.panel2.TabIndex = 1;
-            // 
-            // txtMaHD
-            // 
-            this.txtMaHD.Location = new System.Drawing.Point(69, 4);
-            this.txtMaHD.Name = "txtMaHD";
-            this.txtMaHD.Size = new System.Drawing.Size(101, 20);
-            this.txtMaHD.TabIndex = 1;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 7);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 13);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Mã HD :";
             // 
             // label2
             // 
@@ -330,9 +300,9 @@
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(330, 22);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(246, 20);
+            this.label10.Size = new System.Drawing.Size(245, 20);
             this.label10.TabIndex = 11;
-            this.label10.Text = "Quản Lý Hóa Đơn Nhập Hàng";
+            this.label10.Text = "Quản Lý Hóa Bán Nhập Hàng";
             // 
             // label11
             // 
@@ -368,7 +338,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(133, 35);
             this.button1.TabIndex = 15;
-            this.button1.Text = "Thống Kê Tiền Nhập";
+            this.button1.Text = "Thống Kê Tiền Bán";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // FrmHoaDonNhap
@@ -406,8 +376,6 @@
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,9 +401,6 @@
         private System.Windows.Forms.DateTimePicker dtpNhap;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtMaHD;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTrangthai;
         private System.Windows.Forms.ComboBox cbNhanVien;

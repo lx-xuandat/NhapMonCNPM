@@ -16,6 +16,7 @@ namespace PMQLBanHang.Views
     {
         int matk;
         int maloaitk;
+        int maHDSelected;
         public int Message
         {
             get { return matk; }
@@ -48,14 +49,17 @@ namespace PMQLBanHang.Views
             int index = dgr_hoadonnhap.CurrentRow.Index;
             if (index < soluongrow - 1) // nếu nhấn vào hàng không có giá trị
             {
+                cbNhanVien.Enabled = false;
+                btn_Sua.Enabled = true;
+                btn_Xóa.Enabled = true;
                 lbMaHD.Text  = dgr_hoadonnhap.Rows[index].Cells[0].Value + "";
-                txtMaHD.Text = dgr_hoadonnhap.Rows[index].Cells[0].Value + "";
+                maHDSelected =  Convert.ToInt32(dgr_hoadonnhap.Rows[index].Cells[0].Value);
                 int manv = Convert.ToInt32(dgr_hoadonnhap.Rows[index].Cells[1].Value + "");
-                cbNhanVien.SelectedValue = manv;
-                dtpNhap.Value = Convert.ToDateTime(dgr_hoadonnhap.Rows[index].Cells[2].Value);
-                txtTongtien.Text  = dgr_hoadonnhap.Rows[index].Cells[3].Value + "";
-                txtTrangthai.Text = dgr_hoadonnhap.Rows[index].Cells[4].Value + "";
-                showChiTietHoaDonByMaHD(txtMaHD.Text);
+                cbNhanVien.Text = dgr_hoadonnhap.Rows[index].Cells[2].Value + "";
+                dtpNhap.Value = Convert.ToDateTime(dgr_hoadonnhap.Rows[index].Cells[3].Value);
+                txtTongtien.Text  = dgr_hoadonnhap.Rows[index].Cells[4].Value + "";
+                txtTrangthai.Text = dgr_hoadonnhap.Rows[index].Cells[5].Value + "";
+                showChiTietHoaDonByMaHD(maHDSelected);
                 if (kiemtraTrangThai(txtTrangthai.Text) ==1)// 1 là đã thanh toán 0 là chưa thanh toán
                 {
                     btn_thanhtoan.Enabled = false;
@@ -74,7 +78,7 @@ namespace PMQLBanHang.Views
         private int kiemtraTrangThai(string tt)
         {
             
-            if (tt.Equals("") || Convert.ToInt32(tt)==0)
+            if (tt.Equals("") || tt.Equals("Chưa Thanh Toán") ||Convert.ToInt32(tt)==0)
             {
                 return 0;
             }
@@ -84,7 +88,7 @@ namespace PMQLBanHang.Views
             }
         }
 
-        private void showChiTietHoaDonByMaHD(string mahd)
+        private void showChiTietHoaDonByMaHD(int mahd)
         {
             dgr_chitiet_hdn.DataSource = nhapController.showChiTietHD(mahd);
         }
@@ -92,16 +96,19 @@ namespace PMQLBanHang.Views
         private void initComponents()
         {
             txtTrangthai.Text = "0";
-            txtMaHD.Text = getNextMaHD().ToString();
             lbMaHD.Text = "Mã HD";
+            maHDSelected = -1;
+            cbNhanVien.Enabled = true;
             cbNhanVien.DataSource = nhapController.getListNhanVienKho();
             cbNhanVien.DisplayMember = "sTenNV";
             cbNhanVien.ValueMember = "iMaNV";
-            cbNhanVien.SelectedIndex = 0;
+            cbNhanVien.Text = "";
             dtpNhap.Value = DateTime.Today;
             dgr_chitiet_hdn.DataSource=null;
             txtTongtien.Text = "";
             btn_thanhtoan.Enabled = true;
+            btn_Sua.Enabled = false;
+            btn_Xóa.Enabled = false;
             if (maloaitk==4)
             {
                 //dgr_hoadonnhap.Row = true;
@@ -120,9 +127,9 @@ namespace PMQLBanHang.Views
 
         private void btn_ThemHD_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có thật sự muốn sửa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            if (isFullInfo())
             {
-                if (isFullInfo())
+                if (MessageBox.Show("Bạn có thật sự muốn thêm không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     HoaDonNhap donNhap = new HoaDonNhap();
                     donNhap = getDonNhapFromForm();
@@ -137,7 +144,6 @@ namespace PMQLBanHang.Views
                     }
                 }
             }
-               
         }
 
         private void RefreshFrm()
@@ -149,11 +155,11 @@ namespace PMQLBanHang.Views
         private HoaDonNhap getDonNhapFromForm()
         {
             HoaDonNhap nhap = new HoaDonNhap();
-            nhap.Mahd = Convert.ToInt32(txtMaHD.Text);
+            nhap.Mahd = maHDSelected;
             nhap.Manv = Convert.ToInt32(cbNhanVien.SelectedValue);
             nhap.Ngaylap = dtpNhap.Value;
             nhap.Tongtien = 0;
-            nhap.Trangthai = Convert.ToInt32(txtTrangthai.Text);
+            //nhap.Trangthai = Convert.ToInt32(txtTrangthai.Text);
             return nhap;
         }
 
@@ -221,10 +227,10 @@ namespace PMQLBanHang.Views
                     if (MessageBox.Show("Bạn có thật sự muốn xóa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                     {
 
-                        if (isContainChiTietHD(txtMaHD.Text))
+                        if (isContainChiTietHD(maHDSelected+""))
                         {
                             // xóa hóa đơn và chi tiết hóa đơn
-                            if (nhapController.deleteTwoTable(txtMaHD.Text))
+                            if (nhapController.deleteTwoTable(maHDSelected + ""))
                             {
                                 RefreshFrm();
                                 MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -237,7 +243,7 @@ namespace PMQLBanHang.Views
                         else
                         {
                             // xóa hóa đơn
-                            if (nhapController.deleteOneTable(txtMaHD.Text))
+                            if (nhapController.deleteOneTable(maHDSelected + ""))
                             {
                                 RefreshFrm();
                                 MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -263,18 +269,27 @@ namespace PMQLBanHang.Views
 
         private void btn_Detail_Click(object sender, EventArgs e)
         {
-            
-            switch (maloaitk) {
-                case 2: // quản lý
-                    MessageBox.Show("Không Thể Dùng Quyền Kho!","Thông Báo!"); break;
-                case 4:
-                    Console.WriteLine(maloaitk+"");
-                    FrmChiTietHoaDonNhap frmChiTiet = new FrmChiTietHoaDonNhap();
-                    this.Hide();
-                    frmChiTiet.Message = matk;
-                    frmChiTiet.ShowDialog();
-                    this.Show(); break;
+            if (maHDSelected!=-1)
+            {
+                switch (maloaitk)
+                {
+                    case 2: // quản lý
+                        MessageBox.Show("Tính năng này chỉ cho phép Nhân Viên Kho!", "Thông Báo!"); break;
+                    case 4:
+                        FrmChiTietHoaDonNhap frmChiTiet = new FrmChiTietHoaDonNhap();
+                        frmChiTiet.Message = matk;
+                        frmChiTiet.NumberHD = maHDSelected;
+                        this.Hide();
+                        frmChiTiet.ShowDialog();
+                        this.Show(); break;
+                }
             }
+            else
+            {
+                MessageBox.Show("Chọn 1 hóa đơn!", "Thông Báo!");
+            }
+            
+
         }
 
         private void btn_thanhtoan_Click(object sender, EventArgs e)

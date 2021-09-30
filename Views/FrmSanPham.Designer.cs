@@ -29,25 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSanPham));
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbUser = new System.Windows.Forms.Label();
-            this.avatar = new System.Windows.Forms.PictureBox();
-            this.fileName1 = new System.Windows.Forms.Label();
-            this.btn_Save = new System.Windows.Forms.Button();
-            this.dgr_sanpham = new System.Windows.Forms.DataGridView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.dtpHSD = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.dtpNSX = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.txtSoluong = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.btn_chonanh = new System.Windows.Forms.Button();
             this.cbDonviTinh = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -63,211 +45,52 @@
             this.txt_tensp = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_chonanh = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.lbMaSp = new System.Windows.Forms.Label();
-            this.btn_sua = new System.Windows.Forms.Button();
+            this.txtSoluong = new System.Windows.Forms.TextBox();
+            this.lbUser = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.fileName1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_Xoa = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).BeginInit();
+            this.btn_sua = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.dtpHSD = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.dtpNSX = new System.Windows.Forms.DateTimePicker();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.dgr_sanpham = new System.Windows.Forms.DataGridView();
+            this.avatar = new System.Windows.Forms.PictureBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // btn_chonanh
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(662, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Người sử dụng:";
-            // 
-            // lbUser
-            // 
-            this.lbUser.AutoSize = true;
-            this.lbUser.Location = new System.Drawing.Point(760, 28);
-            this.lbUser.Name = "lbUser";
-            this.lbUser.Size = new System.Drawing.Size(86, 13);
-            this.lbUser.TabIndex = 1;
-            this.lbUser.Text = "Tên Người Dùng";
-            // 
-            // avatar
-            // 
-            this.avatar.Image = ((System.Drawing.Image)(resources.GetObject("avatar.Image")));
-            this.avatar.Location = new System.Drawing.Point(23, 48);
-            this.avatar.Name = "avatar";
-            this.avatar.Size = new System.Drawing.Size(105, 102);
-            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.avatar.TabIndex = 2;
-            this.avatar.TabStop = false;
-            this.avatar.Click += new System.EventHandler(this.avatar_Click);
-            // 
-            // fileName1
-            // 
-            this.fileName1.AutoSize = true;
-            this.fileName1.Location = new System.Drawing.Point(51, 162);
-            this.fileName1.Name = "fileName1";
-            this.fileName1.Size = new System.Drawing.Size(48, 13);
-            this.fileName1.TabIndex = 3;
-            this.fileName1.Text = "fileName";
-            // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(167, 196);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(79, 45);
-            this.btn_Save.TabIndex = 4;
-            this.btn_Save.Text = "Lưu";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
-            // dgr_sanpham
-            // 
-            this.dgr_sanpham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgr_sanpham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgr_sanpham.Location = new System.Drawing.Point(9, 312);
-            this.dgr_sanpham.Name = "dgr_sanpham";
-            this.dgr_sanpham.Size = new System.Drawing.Size(857, 222);
-            this.dgr_sanpham.TabIndex = 5;
-            this.dgr_sanpham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgr_sanpham_CellClick);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.fileName1);
-            this.panel1.Controls.Add(this.btn_Xoa);
-            this.panel1.Controls.Add(this.btn_sua);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.btn_chonanh);
-            this.panel1.Controls.Add(this.lbMaSp);
-            this.panel1.Controls.Add(this.avatar);
-            this.panel1.Controls.Add(this.btn_Save);
-            this.panel1.Location = new System.Drawing.Point(9, 53);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 253);
-            this.panel1.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 29);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 13);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "Mã SP :";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.panel10);
-            this.panel2.Controls.Add(this.panel9);
-            this.panel2.Controls.Add(this.panel8);
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Controls.Add(this.panel5);
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.panel4);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(148, 29);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(715, 161);
-            this.panel2.TabIndex = 8;
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.dtpHSD);
-            this.panel10.Controls.Add(this.label11);
-            this.panel10.Location = new System.Drawing.Point(489, 115);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(215, 31);
-            this.panel10.TabIndex = 3;
-            // 
-            // dtpHSD
-            // 
-            this.dtpHSD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpHSD.Location = new System.Drawing.Point(64, 5);
-            this.dtpHSD.Name = "dtpHSD";
-            this.dtpHSD.Size = new System.Drawing.Size(139, 20);
-            this.dtpHSD.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(13, 5);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(37, 18);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "HSD:";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.dtpNSX);
-            this.panel9.Controls.Add(this.label10);
-            this.panel9.Location = new System.Drawing.Point(264, 115);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(206, 31);
-            this.panel9.TabIndex = 5;
-            // 
-            // dtpNSX
-            // 
-            this.dtpNSX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpNSX.Location = new System.Drawing.Point(54, 6);
-            this.dtpNSX.Name = "dtpNSX";
-            this.dtpNSX.Size = new System.Drawing.Size(139, 20);
-            this.dtpNSX.TabIndex = 1;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 5);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(36, 18);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "NSX:";
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.txtSoluong);
-            this.panel8.Controls.Add(this.label9);
-            this.panel8.Location = new System.Drawing.Point(505, 65);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(199, 31);
-            this.panel8.TabIndex = 4;
-            // 
-            // txtSoluong
-            // 
-            this.txtSoluong.Location = new System.Drawing.Point(74, 5);
-            this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(112, 20);
-            this.txtSoluong.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 5);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 18);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Số Lượng:";
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.cbDonviTinh);
-            this.panel7.Controls.Add(this.label8);
-            this.panel7.Location = new System.Drawing.Point(505, 23);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(199, 31);
-            this.panel7.TabIndex = 3;
+            this.btn_chonanh.Location = new System.Drawing.Point(34, 196);
+            this.btn_chonanh.Name = "btn_chonanh";
+            this.btn_chonanh.Size = new System.Drawing.Size(75, 32);
+            this.btn_chonanh.TabIndex = 6;
+            this.btn_chonanh.Text = "Chọn Ảnh";
+            this.btn_chonanh.UseVisualStyleBackColor = true;
             // 
             // cbDonviTinh
             // 
@@ -397,21 +220,20 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Open Sans SemiBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(432, 0);
+            this.label3.Location = new System.Drawing.Point(381, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(165, 22);
             this.label3.TabIndex = 7;
             this.label3.Text = "Thông Tin Sản Phẩm";
             // 
-            // btn_chonanh
+            // panel7
             // 
-            this.btn_chonanh.Location = new System.Drawing.Point(34, 196);
-            this.btn_chonanh.Name = "btn_chonanh";
-            this.btn_chonanh.Size = new System.Drawing.Size(75, 32);
-            this.btn_chonanh.TabIndex = 6;
-            this.btn_chonanh.Text = "Chọn Ảnh";
-            this.btn_chonanh.UseVisualStyleBackColor = true;
-            this.btn_chonanh.Click += new System.EventHandler(this.btn_chonanh_Click);
+            this.panel7.Controls.Add(this.cbDonviTinh);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Location = new System.Drawing.Point(505, 23);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(199, 31);
+            this.panel7.TabIndex = 3;
             // 
             // lbMaSp
             // 
@@ -423,15 +245,56 @@
             this.lbMaSp.TabIndex = 5;
             this.lbMaSp.Text = "Mã SP";
             // 
-            // btn_sua
+            // txtSoluong
             // 
-            this.btn_sua.Location = new System.Drawing.Point(526, 196);
-            this.btn_sua.Name = "btn_sua";
-            this.btn_sua.Size = new System.Drawing.Size(79, 45);
-            this.btn_sua.TabIndex = 10;
-            this.btn_sua.Text = "Sửa";
-            this.btn_sua.UseVisualStyleBackColor = true;
-            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
+            this.txtSoluong.Location = new System.Drawing.Point(74, 5);
+            this.txtSoluong.Name = "txtSoluong";
+            this.txtSoluong.Size = new System.Drawing.Size(112, 20);
+            this.txtSoluong.TabIndex = 1;
+            // 
+            // lbUser
+            // 
+            this.lbUser.AutoSize = true;
+            this.lbUser.Location = new System.Drawing.Point(721, -28);
+            this.lbUser.Name = "lbUser";
+            this.lbUser.Size = new System.Drawing.Size(86, 13);
+            this.lbUser.TabIndex = 8;
+            this.lbUser.Text = "Tên Người Dùng";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(623, -28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Người sử dụng:";
+            // 
+            // fileName1
+            // 
+            this.fileName1.AutoSize = true;
+            this.fileName1.Location = new System.Drawing.Point(51, 162);
+            this.fileName1.Name = "fileName1";
+            this.fileName1.Size = new System.Drawing.Size(48, 13);
+            this.fileName1.TabIndex = 3;
+            this.fileName1.Text = "fileName";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.fileName1);
+            this.panel1.Controls.Add(this.btn_Xoa);
+            this.panel1.Controls.Add(this.btn_sua);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.btn_chonanh);
+            this.panel1.Controls.Add(this.lbMaSp);
+            this.panel1.Controls.Add(this.avatar);
+            this.panel1.Controls.Add(this.btn_Save);
+            this.panel1.Location = new System.Drawing.Point(12, 68);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(863, 253);
+            this.panel1.TabIndex = 10;
             // 
             // btn_Xoa
             // 
@@ -442,21 +305,182 @@
             this.btn_Xoa.Text = "Xóa";
             this.btn_Xoa.UseVisualStyleBackColor = true;
             // 
-            // FrmSanPham
+            // btn_sua
+            // 
+            this.btn_sua.Location = new System.Drawing.Point(526, 196);
+            this.btn_sua.Name = "btn_sua";
+            this.btn_sua.Size = new System.Drawing.Size(79, 45);
+            this.btn_sua.TabIndex = 10;
+            this.btn_sua.Text = "Sửa";
+            this.btn_sua.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(31, 29);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Mã SP :";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.panel10);
+            this.panel2.Controls.Add(this.panel9);
+            this.panel2.Controls.Add(this.panel8);
+            this.panel2.Controls.Add(this.panel7);
+            this.panel2.Controls.Add(this.panel5);
+            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Location = new System.Drawing.Point(148, 29);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(715, 161);
+            this.panel2.TabIndex = 8;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.dtpHSD);
+            this.panel10.Controls.Add(this.label11);
+            this.panel10.Location = new System.Drawing.Point(489, 115);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(215, 31);
+            this.panel10.TabIndex = 3;
+            // 
+            // dtpHSD
+            // 
+            this.dtpHSD.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpHSD.Location = new System.Drawing.Point(64, 5);
+            this.dtpHSD.Name = "dtpHSD";
+            this.dtpHSD.Size = new System.Drawing.Size(139, 20);
+            this.dtpHSD.TabIndex = 2;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(13, 5);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(37, 18);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "HSD:";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.dtpNSX);
+            this.panel9.Controls.Add(this.label10);
+            this.panel9.Location = new System.Drawing.Point(264, 115);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(206, 31);
+            this.panel9.TabIndex = 5;
+            // 
+            // dtpNSX
+            // 
+            this.dtpNSX.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNSX.Location = new System.Drawing.Point(54, 6);
+            this.dtpNSX.Name = "dtpNSX";
+            this.dtpNSX.Size = new System.Drawing.Size(139, 20);
+            this.dtpNSX.TabIndex = 1;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 5);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 18);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "NSX:";
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.txtSoluong);
+            this.panel8.Controls.Add(this.label9);
+            this.panel8.Location = new System.Drawing.Point(505, 65);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(199, 31);
+            this.panel8.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 5);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 18);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Số Lượng:";
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(167, 196);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(79, 45);
+            this.btn_Save.TabIndex = 4;
+            this.btn_Save.Text = "Lưu";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            // 
+            // dgr_sanpham
+            // 
+            this.dgr_sanpham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgr_sanpham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgr_sanpham.Location = new System.Drawing.Point(12, 327);
+            this.dgr_sanpham.Name = "dgr_sanpham";
+            this.dgr_sanpham.Size = new System.Drawing.Size(863, 245);
+            this.dgr_sanpham.TabIndex = 9;
+            // 
+            // avatar
+            // 
+            this.avatar.Image = ((System.Drawing.Image)(resources.GetObject("avatar.Image")));
+            this.avatar.Location = new System.Drawing.Point(23, 48);
+            this.avatar.Name = "avatar";
+            this.avatar.Size = new System.Drawing.Size(105, 102);
+            this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.avatar.TabIndex = 2;
+            this.avatar.TabStop = false;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(778, 27);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(86, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Tên Người Dùng";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(680, 27);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(79, 13);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Người sử dụng:";
+            // 
+            // FrmSanPham1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 556);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgr_sanpham);
+            this.ClientSize = new System.Drawing.Size(887, 584);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.lbUser);
             this.Controls.Add(this.label1);
-            this.Name = "FrmSanPham";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Quản Lý Sản Phẩm";
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dgr_sanpham);
+            this.Name = "FrmSanPham1";
+            this.Text = "Quản lý sản phẩm";
             this.Load += new System.EventHandler(this.FrmSanPham_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -466,16 +490,8 @@
             this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -483,43 +499,45 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lbUser;
-        private System.Windows.Forms.PictureBox avatar;
-        private System.Windows.Forms.Label fileName1;
-        private System.Windows.Forms.Button btn_Save;
-        private System.Windows.Forms.DataGridView dgr_sanpham;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button btn_chonanh;
+        private System.Windows.Forms.ComboBox cbDonviTinh;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.TextBox txtGia;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.ComboBox cbLoaiSP;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ComboBox CbTenNcc;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.TextBox txt_tensp;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btn_chonanh;
-        private System.Windows.Forms.Label lbMaSp;
-        private System.Windows.Forms.Panel panel10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Panel panel9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.TextBox txtSoluong;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.DateTimePicker dtpHSD;
-        private System.Windows.Forms.DateTimePicker dtpNSX;
-        private System.Windows.Forms.ComboBox cbDonviTinh;
-        private System.Windows.Forms.ComboBox cbLoaiSP;
-        private System.Windows.Forms.ComboBox CbTenNcc;
+        private System.Windows.Forms.Label lbMaSp;
+        private System.Windows.Forms.TextBox txtSoluong;
+        private System.Windows.Forms.Label lbUser;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label fileName1;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_sua;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.DateTimePicker dtpHSD;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.DateTimePicker dtpNSX;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox avatar;
+        private System.Windows.Forms.Button btn_Save;
+        private System.Windows.Forms.DataGridView dgr_sanpham;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

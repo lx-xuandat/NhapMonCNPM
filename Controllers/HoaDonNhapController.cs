@@ -14,15 +14,14 @@ namespace PMQLBanHang.Controllers
         ConnectDB connectDB = new ConnectDB();
         internal object getListHD()
         {
-            DataTable data = connectDB.ExecuteProc("sp_show_HD");
+            DataTable data = connectDB.ExecuteProc("sp_ds_HoaDonNhap");
             //return changeGender(data);
             return data;
         }
 
         internal List<NhanVien> getListNhanVienKho()
         {
-            string query = "select a.iMaNV,a.sTenNV from tblNhanVien  a where sChucVu=N'nhanvienkho'";
-            DataTable data = connectDB.ExecuteQuery(query);
+            DataTable data = connectDB.ExecuteProc("sp_ds_NhanVienKho");
             List<NhanVien> list = new List<NhanVien>();
             for (int i = 0; i < data.Rows.Count; i++)
             {
@@ -49,13 +48,12 @@ namespace PMQLBanHang.Controllers
 
         internal bool addHoaDonNhap(HoaDonNhap x)
         {
-            //create proc sp_add_HDN @mahd int, @manv int, @ngaynhap datetime,@tongtien float, @trangthai int
-            //    as
-            //    begin
-
+            //create proc sp_them_HoaDonNhap @mahd int, @manv int, @ngaynhap datetime,@tongtien float, @trangthai int
+            //as
+            //begin
             //    insert into tblHoaDonNhap values(@manv, @ngaynhap, @tongtien, @trangthai);
             //end
-            string nameProc = "sp_add_HDN";
+            string nameProc = "sp_them_HoaDonNhap";
             string[] nameParams = new string[] { "@mahd", "@manv", "@ngaynhap", "@tongtien", "@trangthai" };
             Object[] valuePrams = new Object[] { x.Mahd, x.Manv,x.Ngaylap,x.Tongtien,x.Trangthai};
             if (connectDB.ExecuteNonProc(nameProc, nameParams, valuePrams) != 1)
@@ -68,7 +66,7 @@ namespace PMQLBanHang.Controllers
             }
         }
 
-        internal DataTable showChiTietHD(string mahd)
+        internal DataTable showChiTietHD(int mahd)
         {
             string query = "select a.iMaHDN as N'Mã HĐ',a.iMaSP as N'Mã SP', a.fGiaNhap as N'Gía Nhập',"
                 + " a.iSoLuongNhap as N'Số Lượng Nhâp' from tblChiTietHDN a where a.iMaHDN ="+mahd;
@@ -77,17 +75,14 @@ namespace PMQLBanHang.Controllers
 
         internal bool updateHoaDonNhap(HoaDonNhap x)
         {
-            //create proc sp_update_HDN @mahd int, @manv int, @ngaynhap datetime,@tongtien float, @trangthai int
+            //create proc sp_capnhat_HoaDonNhap @mahd int, @manv int, @ngaynhap datetime,@tongtien float, @trangthai int
             //as
             //begin
-
             //    update tblHoaDonNhap
-
             //    set iMaNV = @manv, dNgayLap = @ngaynhap, fTongTien = @tongtien, iTrangThai = @trangthai
-
             //    where iMaHDN = @mahd
             //end
-            string nameProc = "sp_update_HDN";
+            string nameProc = "sp_capnhat_HoaDonNhap";
             string[] nameParams = new string[] { "@mahd", "@manv", "@ngaynhap", "@tongtien", "@trangthai" };
             Object[] valuePrams = new Object[] { x.Mahd, x.Manv, x.Ngaylap, x.Tongtien, x.Trangthai };
             if (connectDB.ExecuteNonProc(nameProc, nameParams, valuePrams) != 1)

@@ -56,9 +56,7 @@ namespace PMQLBanHang
                                 frmQuanLy.Message = getMaTK(row);
                                 frmQuanLy.ShowDialog();
                                 this.Show();
-                                //MessageBox.Show(getMaTK(row)+"Bạn Đăng Nhập Quyền Bán Hàng", "Thông Báo!");
                                 break;
-
                             case 3: MessageBox.Show("Bạn Đăng Nhập Quyền Bán Hàng", "Thông Báo!"); break;
                             case 4:
                                 MessageBox.Show("Bạn Đăng Nhập Quyền Kho", "Thông Báo!");

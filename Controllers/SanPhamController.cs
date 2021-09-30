@@ -14,7 +14,7 @@ namespace PMQLBanHang.Controllers
 
         internal object getListSP()
         {
-            DataTable data = connectDB.ExecuteProc("sp_show_SP");
+            DataTable data = connectDB.ExecuteProc("sp_ds_SanPham");
             //return changeGender(data);
             return data;
         }

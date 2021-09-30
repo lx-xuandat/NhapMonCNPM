@@ -40,9 +40,10 @@
             // 
             // btn_QLNhanVien
             // 
-            this.btn_QLNhanVien.Location = new System.Drawing.Point(81, 96);
+            this.btn_QLNhanVien.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_QLNhanVien.Location = new System.Drawing.Point(34, 143);
             this.btn_QLNhanVien.Name = "btn_QLNhanVien";
-            this.btn_QLNhanVien.Size = new System.Drawing.Size(129, 49);
+            this.btn_QLNhanVien.Size = new System.Drawing.Size(133, 76);
             this.btn_QLNhanVien.TabIndex = 0;
             this.btn_QLNhanVien.Text = "Quản Lý Nhân Viên";
             this.btn_QLNhanVien.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
             // 
             // btn_QLSanPham
             // 
-            this.btn_QLSanPham.Location = new System.Drawing.Point(352, 96);
+            this.btn_QLSanPham.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_QLSanPham.Location = new System.Drawing.Point(576, 142);
             this.btn_QLSanPham.Name = "btn_QLSanPham";
-            this.btn_QLSanPham.Size = new System.Drawing.Size(131, 49);
+            this.btn_QLSanPham.Size = new System.Drawing.Size(148, 77);
             this.btn_QLSanPham.TabIndex = 1;
             this.btn_QLSanPham.Text = "Quản Lý Sản Phẩm";
             this.btn_QLSanPham.UseVisualStyleBackColor = true;
@@ -60,57 +62,71 @@
             // 
             // btn_QLHoaDonNhap
             // 
-            this.btn_QLHoaDonNhap.Location = new System.Drawing.Point(352, 200);
+            this.btn_QLHoaDonNhap.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_QLHoaDonNhap.Location = new System.Drawing.Point(213, 143);
             this.btn_QLHoaDonNhap.Name = "btn_QLHoaDonNhap";
-            this.btn_QLHoaDonNhap.Size = new System.Drawing.Size(131, 50);
+            this.btn_QLHoaDonNhap.Size = new System.Drawing.Size(142, 74);
             this.btn_QLHoaDonNhap.TabIndex = 2;
-            this.btn_QLHoaDonNhap.Text = "Quản Lý Hóa Đơn Nhập Hàng";
+            this.btn_QLHoaDonNhap.Text = "Quản Lý Hóa Đơn Bán Hàng";
             this.btn_QLHoaDonNhap.UseVisualStyleBackColor = true;
             this.btn_QLHoaDonNhap.Click += new System.EventHandler(this.btn_QLHoaDonNhap_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans SemiBold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(185, 38);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Open Sans SemiBold", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(253, 47);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(184, 22);
+            this.label1.Size = new System.Drawing.Size(264, 28);
             this.label1.TabIndex = 4;
-            this.label1.Text = "Chức Năng Của Quản Lý";
+            this.label1.Text = "Chức Năng Của Phần Mềm";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(22, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Người dùng :";
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
+            this.labelName.BackColor = System.Drawing.Color.Transparent;
+            this.labelName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.ForeColor = System.Drawing.Color.White;
             this.labelName.Location = new System.Drawing.Point(111, 19);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(70, 13);
+            this.labelName.Size = new System.Drawing.Size(86, 16);
             this.labelName.TabIndex = 6;
             this.labelName.Text = "Tên Của Bạn";
             // 
             // btn_Logout
             // 
-            this.btn_Logout.Location = new System.Drawing.Point(479, 19);
+            this.btn_Logout.BackColor = System.Drawing.Color.Transparent;
+            this.btn_Logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Logout.ForeColor = System.Drawing.Color.Black;
+            this.btn_Logout.Location = new System.Drawing.Point(646, 19);
             this.btn_Logout.Name = "btn_Logout";
-            this.btn_Logout.Size = new System.Drawing.Size(75, 23);
+            this.btn_Logout.Size = new System.Drawing.Size(78, 31);
             this.btn_Logout.TabIndex = 7;
             this.btn_Logout.Text = "Đăng Xuất";
-            this.btn_Logout.UseVisualStyleBackColor = true;
+            this.btn_Logout.UseVisualStyleBackColor = false;
             this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
             // btn_QlyTaiKhoan
             // 
-            this.btn_QlyTaiKhoan.Location = new System.Drawing.Point(81, 200);
+            this.btn_QlyTaiKhoan.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_QlyTaiKhoan.Location = new System.Drawing.Point(402, 142);
             this.btn_QlyTaiKhoan.Name = "btn_QlyTaiKhoan";
-            this.btn_QlyTaiKhoan.Size = new System.Drawing.Size(129, 50);
+            this.btn_QlyTaiKhoan.Size = new System.Drawing.Size(129, 77);
             this.btn_QlyTaiKhoan.TabIndex = 8;
             this.btn_QlyTaiKhoan.Text = "Quản Lý Tài Khoản";
             this.btn_QlyTaiKhoan.UseVisualStyleBackColor = true;
@@ -120,7 +136,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 302);
+            this.BackgroundImage = global::PMQLBanHang.Properties.Resources.background_grafana;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(763, 396);
             this.Controls.Add(this.btn_QlyTaiKhoan);
             this.Controls.Add(this.btn_Logout);
             this.Controls.Add(this.labelName);

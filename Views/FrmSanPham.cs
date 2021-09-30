@@ -15,7 +15,7 @@ namespace PMQLBanHang.Views
 {
     public partial class FrmSanPham : Form
     {
-        string filePath="";
+        string filePath = "";
         int matk;
         public int Message
         {
@@ -56,7 +56,7 @@ namespace PMQLBanHang.Views
             txt_tensp.Text = "";
             txtGia.Text = "";
             txtSoluong.Text = "";
-            dtpNSX.Value =DateTime.Today;
+            dtpNSX.Value = DateTime.Today;
             dtpHSD.Value = DateTime.Today;
             avatar.Image = Image.FromFile(Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\" + "9400570_orig.png");
             btn_Save.Enabled = true;
@@ -74,7 +74,7 @@ namespace PMQLBanHang.Views
 
         private void avatar_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog  ofd = new OpenFileDialog() { Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*", ValidateNames = true, Multiselect = false })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*", ValidateNames = true, Multiselect = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -145,11 +145,12 @@ namespace PMQLBanHang.Views
                 dtpNSX.Text = dgr_sanpham.Rows[index].Cells[7].Value + "";
                 dtpHSD.Text = dgr_sanpham.Rows[index].Cells[8].Value + "";
                 string hinhanh = dgr_sanpham.Rows[index].Cells[9].Value + "";
-                if (hinhanh.Length==0)
+                if (hinhanh.Length == 0)
                 {
                     fileName1.Text = "fileName";
                     avatar.Image = Image.FromFile(Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\" + "9400570_orig.png");
-                } else
+                }
+                else
                 {
                     fileName1.Text = hinhanh;
                     saveImage();
@@ -164,7 +165,7 @@ namespace PMQLBanHang.Views
         }
         private List<LoaiSanPham> getListLoaiSP()
         {
-            List<LoaiSanPham> loaiSanPhams =  sanPhamController.getListLoaiSP();
+            List<LoaiSanPham> loaiSanPhams = sanPhamController.getListLoaiSP();
             return loaiSanPhams;
         }
 
@@ -187,13 +188,15 @@ namespace PMQLBanHang.Views
 
         private bool isFullInfo()
         {
-            if (txt_tensp.Text.Length ==0)
+            if (txt_tensp.Text.Length == 0)
             {
                 MessageBox.Show("Tên Sản Phẩm Không được để trống!", "Thông Báo !"); return false;
-            } else if (txtSoluong.Text.Length == 0)
+            }
+            else if (txtSoluong.Text.Length == 0)
             {
                 MessageBox.Show("Hãy Nhập số lượng !", "Thông Báo !"); return false;
-            }  else
+            }
+            else
             {
                 return true;
             }
@@ -226,7 +229,7 @@ namespace PMQLBanHang.Views
             {
                 san.Hinhanh = fileName1.Text;
             }
-            
+
             return san;
         }
 

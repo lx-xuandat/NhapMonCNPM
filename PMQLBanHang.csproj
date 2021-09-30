@@ -54,12 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectDB.cs" />
+    <Compile Include="Controllers\ChiTietHoaDonNhapController.cs" />
     <Compile Include="Controllers\HoaDonNhapController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\QuanLyController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Models\ChiTietHoaDonNhap.cs" />
     <Compile Include="Models\HoaDonNhap.cs" />
     <Compile Include="Models\LoaiSanPham.cs" />
     <Compile Include="Models\NCC.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\FrmChiTietHoaDonNhap.resx">
       <DependentUpon>FrmChiTietHoaDonNhap.cs</DependentUpon>
@@ -154,6 +157,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="assets\images\background-grafana.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
