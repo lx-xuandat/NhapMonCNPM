@@ -11,7 +11,7 @@ namespace PMQLBanHang
 {
     public class ConnectDB
     {
-        public string CnnString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
+        public string CnnString = ConfigurationManager.ConnectionStrings["bkav"].ConnectionString;
         public DataTable ExecuteQuery(string query, Object[] parameters = null)
         {
             DataTable data = new DataTable();

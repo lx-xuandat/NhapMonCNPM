@@ -49,7 +49,8 @@ namespace PMQLBanHang
                         DataRow row = data.Rows[0];
                         switch (kiemTraChucVu(row))  // 1 là chusohuu / 2 là quanly /3 nhanvienbanhang /4 là nhanvienkho
                         {
-                            case 1: MessageBox.Show("Bạn Đăng Nhập Quyền CHủ Sở Huữ", "Thông Báo!"); break;
+                            case 1: MessageBox.Show("Bạn Đăng Nhập Quyền CHủ Sở Hữu", "Thông Báo!");
+                                break;
                             case 2:
                                 this.Hide();
                                 FrmQuanLy frmQuanLy = new FrmQuanLy();
