@@ -49,7 +49,8 @@ namespace PMQLBanHang
                         DataRow row = data.Rows[0];
                         switch (kiemTraChucVu(row))  // 1 là chusohuu / 2 là quanly /3 nhanvienbanhang /4 là nhanvienkho
                         {
-                            case 1: MessageBox.Show("Bạn Đăng Nhập Quyền CHủ Sở Huữ", "Thông Báo!"); break;
+                            case 1: MessageBox.Show("Bạn Đăng Nhập Quyền CHủ Sở Hữu", "Thông Báo!");
+                                break;
                             case 2:
                                 this.Hide();
                                 FrmQuanLy frmQuanLy = new FrmQuanLy();
@@ -57,13 +58,20 @@ namespace PMQLBanHang
                                 frmQuanLy.ShowDialog();
                                 this.Show();
                                 break;
-                            case 3: MessageBox.Show("Bạn Đăng Nhập Quyền Bán Hàng", "Thông Báo!"); break;
+                            case 3: MessageBox.Show("Bạn Đăng Nhập Quyền Bán Hàng", "Thông Báo!");
+                                this.Hide();
+                                FrmHoaDonBan frmHoaDonBan = new FrmHoaDonBan();
+                                frmHoaDonBan.Message = getMaTK(row);
+                                frmHoaDonBan.ShowDialog();
+                                this.Show();
+                                break;
                             case 4:
                                 MessageBox.Show("Bạn Đăng Nhập Quyền Kho", "Thông Báo!");
                                 this.Hide();
                                 FrmHoaDonNhap frmHoaDonNhap = new FrmHoaDonNhap();
                                 frmHoaDonNhap.Message = getMaTK(row);
                                 frmHoaDonNhap.ShowDialog();
+                                this.Show();
                                 break;
                         }
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace PMQLBanHang.Views
 {
-    public partial class FrmChiTietHoaDonNhap : Form
+    public partial class FrmChiTietHoaDonBanHang : Form
     {
         int matk;
         int maHD;
@@ -27,8 +27,8 @@ namespace PMQLBanHang.Views
         }
         QuanLyController quanLyController = new QuanLyController();
         SanPhamController sanPhamController = new SanPhamController();
-        ChiTietHoaDonNhapController ChiTietHoaDonNhapController = new ChiTietHoaDonNhapController();
-        public FrmChiTietHoaDonNhap()
+        ChiTietHoaDonBanController ChiTietHoaDonNhapController = new ChiTietHoaDonBanController();
+        public FrmChiTietHoaDonBanHang()
         {
             InitializeComponent();
         }
@@ -43,7 +43,7 @@ namespace PMQLBanHang.Views
         {
             txtSohd.Text = maHD + "";
             dgrMatHang.DataSource = sanPhamController.getListSP();
-            dgrChiTietHang.DataSource = ChiTietHoaDonNhapController.getListSPNhapInCTHD(maHD);
+            dgrChiTietHang.DataSource = ChiTietHoaDonNhapController.getListSPBanInCTHD(maHD);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -81,6 +81,11 @@ namespace PMQLBanHang.Views
             {
                 initComponents();
             }
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

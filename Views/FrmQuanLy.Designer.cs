@@ -30,7 +30,7 @@
         {
             this.btn_QLNhanVien = new System.Windows.Forms.Button();
             this.btn_QLSanPham = new System.Windows.Forms.Button();
-            this.btn_QLHoaDonNhap = new System.Windows.Forms.Button();
+            this.btn_QLHoaDonBan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.labelName = new System.Windows.Forms.Label();
@@ -60,16 +60,16 @@
             this.btn_QLSanPham.UseVisualStyleBackColor = true;
             this.btn_QLSanPham.Click += new System.EventHandler(this.btn_QLSanPham_Click);
             // 
-            // btn_QLHoaDonNhap
+            // btn_QLHoaDonBan
             // 
-            this.btn_QLHoaDonNhap.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_QLHoaDonNhap.Location = new System.Drawing.Point(213, 143);
-            this.btn_QLHoaDonNhap.Name = "btn_QLHoaDonNhap";
-            this.btn_QLHoaDonNhap.Size = new System.Drawing.Size(142, 74);
-            this.btn_QLHoaDonNhap.TabIndex = 2;
-            this.btn_QLHoaDonNhap.Text = "Quản Lý Hóa Đơn Bán Hàng";
-            this.btn_QLHoaDonNhap.UseVisualStyleBackColor = true;
-            this.btn_QLHoaDonNhap.Click += new System.EventHandler(this.btn_QLHoaDonNhap_Click);
+            this.btn_QLHoaDonBan.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_QLHoaDonBan.Location = new System.Drawing.Point(213, 143);
+            this.btn_QLHoaDonBan.Name = "btn_QLHoaDonBan";
+            this.btn_QLHoaDonBan.Size = new System.Drawing.Size(142, 74);
+            this.btn_QLHoaDonBan.TabIndex = 2;
+            this.btn_QLHoaDonBan.Text = "Quản Lý Hóa Đơn Bán Hàng";
+            this.btn_QLHoaDonBan.UseVisualStyleBackColor = true;
+            this.btn_QLHoaDonBan.Click += new System.EventHandler(this.btn_QLHoaDonNhap_Click);
             // 
             // label1
             // 
@@ -144,7 +144,7 @@
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btn_QLHoaDonNhap);
+            this.Controls.Add(this.btn_QLHoaDonBan);
             this.Controls.Add(this.btn_QLSanPham);
             this.Controls.Add(this.btn_QLNhanVien);
             this.Name = "FrmQuanLy";
@@ -160,7 +160,7 @@
 
         private System.Windows.Forms.Button btn_QLNhanVien;
         private System.Windows.Forms.Button btn_QLSanPham;
-        private System.Windows.Forms.Button btn_QLHoaDonNhap;
+        private System.Windows.Forms.Button btn_QLHoaDonBan;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelName;

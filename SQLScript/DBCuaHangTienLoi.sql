@@ -77,7 +77,8 @@ create table tblHoaDonBan(
   iMaHDB int identity(1,1) primary key(iMaHDB),
   iMaNV  int,
   dNgayLap date,
-  fTongTien float
+  fTongTien float,
+  iTrangThai int
 )
 
 -- CREATE TABLE CHI TIẾT HÓA ĐƠN BÁN HÀNG
@@ -134,9 +135,9 @@ create table tblChiTietHDN(
 
 
   -- thêm nhân viên
- insert into tblNhanVien values(N'Nguyễn Đình Phong',1,N'Hà Nội','2000-06-26','2020-10-19','0352337342');
+ insert into tblNhanVien values(N'Nguyễn Đình Phong',1,N'Hà Nội','2000-06-26','2020-10-19','0352337342',0);
  -- thêm tài khoản
- insert into tblTaiKhoan values('phong','123',1,1);
+ insert into tblTaiKhoan values('dinhphong','123',2,1);
 
 
 
@@ -167,9 +168,9 @@ insert into tblSanPham values(N'Bánh Mì Cháy',2,1,20000,50,'Cái','2021-09-23
 insert into tblSanPham values(N'Bánh Mì Ruốc',2,1,20000,50,'Cái','2021-09-23','2021-10-23',null)
 insert into tblSanPham values(N'Bánh Mì Bơ',2,1,20000,50,'Cái','2021-09-23','2021-10-23',null)
 -- Sữa
-insert into tblSanPham values(N'Sữa Bò',3,1,30000,50,'Hộp','2021-09-23','2021-10-23',null)
-insert into tblSanPham values(N'Sữa Ông Thọ',3,1,30000,50,'Hộp','2021-09-23','2021-10-23',null)
-insert into tblSanPham values(N'Sữa MiLo',3,1,20000,50,'Hộp','2021-09-23','2021-10-23',null)
+insert into tblSanPham values(N'Sữa Bò',3,1,30000,50,N'Hộp','2021-09-23','2021-10-23',null)
+insert into tblSanPham values(N'Sữa Ông Thọ',3,1,30000,50,N'Hộp','2021-09-23','2021-10-23',null)
+insert into tblSanPham values(N'Sữa MiLo',3,1,20000,50,N'Hộp','2021-09-23','2021-10-23',null)
 -- Bim Bim
 insert into tblSanPham values(N'Bim Bim khoai Tây',4,2,10000,50,'Gói','2021-09-23','2021-10-23',null)
 insert into tblSanPham values(N'Bim Bim Chuối',4,2,10000,50,'Gói','2021-09-23','2021-10-23',null)
@@ -206,8 +207,6 @@ begin
 	where STenDangNhap = @tendangnhap and sMatKhau = @matkhau
 end
 go
--- kiểm tra
-exec sp_checklogin 'phong','123'
 
 -- lấy tên nhân viên từ mã nhân viên
 select sTenNV from tblNhanVien where iMaNV = 1
@@ -350,6 +349,15 @@ as
  from tblSanPham a
  end
  exec sp_ds_SanPham
+ -- tạo proc sửa sản phẩm
+go
+create proc sp_them_SanPham @masp int,@tensp nvarchar(100),@maloai int,@mancc int,@gia float,@soluong int,@dvt nvarchar(10),
+@nsx datetime,@hsd datetime,@hinhanh nvarchar(100)
+as 
+	begin
+			insert into tblSanPham values(@tensp,@maloai,@mancc,@gia,@soluong,@dvt,@nsx,@hsd,@hinhanh)
+	end
+	go
 -- tạo proc sửa sản phẩm
 go
 create proc sp_capnhat_SanPham @masp int,@tensp nvarchar(100),@maloai int,@mancc int,@gia float,@soluong int,@dvt nvarchar(10),
@@ -465,3 +473,165 @@ as
 	end
 select * from tblLoaiTaiKhoan where iMaLoaiTK!=1
 select * from tblNhanVien where trangthai=0 or trangthai is null
+
+--HÓA ĐƠN BÁN HÀNG
+go 
+-- tạo proc xem danh sách hóa đơn bán
+create proc sp_ds_HoaDonBan
+as begin
+	select a.iMaHDB as N'Mã HĐ', a.iMaNV as N'Mã NV',b.sTenNV as N'Tên Nhân Viên', a.dNgayLap N'Ngày Lập',a.fTongTien as N'Tổng Tiền',
+	case (a.iTrangThai)
+		when 0 then N'Chưa Thanh Toán'
+		when 1 then N'Đã Thanh Toán'
+	end as N'Trạng Thái' 
+	from tblHoaDonBan a,tblNhanVien b
+	where a.iMaNV = b.iMaNV
+	end
+exec sp_ds_HoaDonBan
+go
+-- proc thêm hóa đơn bán hàng
+create proc sp_them_HoaDonBan @mahd int,@manv int,@ngaylap datetime
+as
+begin
+	insert into tblHoaDonBan values(@manv,@ngaylap,0,0);
+end
+-- lấy chi tiết hóa đơn bán theo mã hóa đơn
+select a.iMaHDB as N'Mã HĐ',a.iMaSP as N'Mã SP', b.fGia as N'Giá Bán', a.iSoLuongBan as N'Số Lượng Bán', (a.iSoLuongBan*b.fGia) as N'Thành Tiền'
+from tblChiTietHDB a, tblSanPham b
+where a.iMaHDB = 1 and a.iMaSP = b.iMaSP
+go
+-- tao proc sửa hóa đơn bán
+create proc sp_capnhat_HoaDonBan @mahd int,@manv int,@ngaylap datetime,@tongtien float,@trangthai int
+as
+begin
+	update tblHoaDonBan 
+	set iMaNV = @manv , dNgayLap = @ngaylap,fTongTien = @tongtien , iTrangThai = @trangthai
+	where iMaHDB = @mahd
+end 
+go
+-- xóa hóa đơn bán hàng 
+create proc sp_xoa_HoaDonBan_va_ChiTietHDB @mahd int
+as
+	begin
+		declare @count int
+		set @count = (select count(iMaHDB) from tblChiTietHDB where iMaHDB=@mahd)
+		-- không có chi tiết hóa đơn
+		if @count = 0
+			delete tblHoaDonBan
+			where iMaHDB =@mahd
+		-- có chi tiết háo đơn
+		else
+			delete tblHoaDonBan
+			where iMaHDB = @mahd
+			delete tblHoaDonBan
+			where iMaHDB =@mahd
+	end
+go
+-- proc lấy danh sách nhân viên bán hàng
+go
+create proc sp_ds_NhanVienBanHang
+as begin
+select b.iMaNV,b.sTenNV from tblLoaiTaiKhoan a,tblNhanVien b, tblTaiKhoan c
+where b.iMaNV=c.iMaNV and c.iMaLoaiTK = a.iMaLoaiTK and a.iMaLoaiTK=3
+end 
+-- thanh toán hóa đơn bán hàng
+go
+create proc sp_thanhtoan_HoaDonBan @mahd int
+as
+begin 
+update tblHoaDonBan
+set iTrangThai =1
+where iMaHDB = @mahd
+end
+
+go
+create trigger tr_them_SanPhamChiTietHDB_TongTienHDB on tblChiTietHDB after insert,update
+as 
+begin
+	declare @mahdb int
+	set @mahdb =  (select iMaHDB from inserted)
+	update tblHoaDonBan
+	set fTongTien = fTongTien + (select SUM(a.iSoLuongBan * b.fGia) from inserted a,tblSanPham b where a.iMaHDB = iMaHDB and a.iMaSP=b.iMaSP)
+	where iMaHDB = @mahdb
+end
+go
+-- ds sản phẩm bán để thêm vào giỏ
+go
+create proc sp_ds_SanPhamBan
+ as begin 
+ select a.iMaSP as N'Mã SP', a.sTenSP as N'Tên SP',a.fGia as N'Gía',a.iSoLuong as N'Số Lượng',a.dNgaySX as N'Ngày SX',a.dHanSD as N'Hạn SD'
+ from tblSanPham a
+ end
+ exec sp_ds_SanPhamBan
+--  ds sản phẩm chi tiết hóa đơn
+go
+create proc sp_ds_SanPham_CTHDBanHang @mahd int
+as
+    begin
+        select b.iMaSP as N'Mã Sản Phẩm', b.sTenSP as N'Tên Sản Phẩm', a.iSoLuongBan as N'Số Lượng Bán', B.fGia as N'Giá Nhập', (b.fGia  * a.iSoLuongBan) as N'Thành Tiền'
+        from tblChiTietHDB a, tblSanPham b
+        where iMaHDB = @mahd and a.iMaSP = b.iMaSP
+    end      
+go 
+exec sp_ds_SanPham_CTHDBanHang 1
+-- thêm sản phẩm vào hóa đơn
+create proc sp_them_SanPham_CTHDBan @mahd int, @masp int, @soluongban int
+as
+begin
+ declare @tontai int
+ set @tontai = (select count(iMaHDB) from tblChiTietHDB where iMaHDB = @mahd and iMaSP = @masp)
+ print @tontai
+ if @tontai != 0
+    begin
+		update tblChiTietHDB
+		set iSoLuongBan = iSoLuongBan + @soluongban
+		where iMaHDB = @mahd and iMaSP = @masp
+	end
+	else
+		begin
+			insert into tblChiTietHDB values(@mahd, @masp, @soluongban);
+		end
+	update tblSanPham
+	set iSoLuong = iSoLuong - @soluongban
+	where iMaSP = @masp
+end   
+go
+exec sp_them_SanPham_CTHDBan 1,1,1
+-- câp nhật sản phẩm vào hóa đơn
+go
+create proc sp_capnhat_SanPham_CTHDBan @mahd int, @masp int, @soluongban int
+as
+begin
+	declare @soluongbandau int
+	set @soluongbandau = (select iSoLuongBan from tblChiTietHDB where iMaHDB = @mahd and iMaSP = @masp)
+	update tblChiTietHDB
+	set iSoLuongBan =  @soluongban
+	where iMaHDB = @mahd and iMaSP = @masp
+	update tblSanPham
+	set iSoLuong = iSoLuong + @soluongbandau - @soluongban
+	where iMaSP = @masp
+end  
+go
+-- xóa sản phẩm trong hóa đơn
+create proc sp_xoa_SanPham_CTHDBan @mahd int, @masp int,@tongtien float
+as
+begin
+	declare @soluongxoa int
+	set @soluongxoa = (select iSoLuongBan from tblChiTietHDB where iMaHDB = @mahd and iMaSP = @masp)
+	begin
+		delete tblChiTietHDB
+		where iMaHDB = @mahd and iMaSP = @masp
+		update tblSanPham
+		set iSoLuong = iSoLuong + @soluongxoa
+		where iMaSP = @masp
+		update tblHoaDonBan 
+		set fTongTien = fTongTien - @tongtien
+		where iMaHDB=@mahd
+	end
+end
+
+exec sp_xoa_SanPham_CTHDBan 1,2
+select fTongTien from tblHoaDonBan where iMaHDB = 2
+
+select * from tblChiTietHDB a, tblHoaDonBan b where a.iMaHDB = b.iMaHDB
+select b.fTongTien from tblChiTietHDB a, tblHoaDonBan b where a.iMaHDB = 1 and a.iMaHDB = b.iMaHDB and a.iMaSP =1

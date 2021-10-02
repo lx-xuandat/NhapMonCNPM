@@ -65,10 +65,15 @@ namespace PMQLBanHang.Views
 
         private void btn_QLHoaDonNhap_Click(object sender, EventArgs e)
         {
-            FrmHoaDonNhap frmHoaDonNhap = new FrmHoaDonNhap();
+            //FrmHoaDonNhap frmHoaDonNhap = new FrmHoaDonNhap();
+            //this.Hide();
+            //frmHoaDonNhap.Message = matk;
+            //frmHoaDonNhap.ShowDialog();
+            //this.Show();
+            FrmHoaDonBan frmHoaDonBan = new FrmHoaDonBan();
             this.Hide();
-            frmHoaDonNhap.Message = matk;
-            frmHoaDonNhap.ShowDialog();
+            frmHoaDonBan.Message = matk;
+            frmHoaDonBan.ShowDialog();
             this.Show();
         }
 

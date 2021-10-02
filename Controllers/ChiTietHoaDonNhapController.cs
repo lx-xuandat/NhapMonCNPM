@@ -46,5 +46,15 @@ namespace PMQLBanHang.Controllers
             object[] values = new object[] { x.Mahd,x.Masp,x.Soluongnhap,x.Gianhap };
             return connectDB.ExecuteNonProc("sp_them_SanPham_CTHDNhap", nameParams, values);
         }
+
+        internal DataTable getListSPNhap(int maHD)
+        {
+            //create proc sp_ds_SanPhamBan
+            // as begin
+            // select a.iMaSP as N'Mã SP', a.sTenSP as N'Tên SP',a.fGia as N'Gía',a.iSoLuong as N'Số Lượng',a.dNgaySX as N'Ngày SX',a.dHanSD as N'Hạn SD'
+            // from tblSanPham a
+            // end
+            return connectDB.ExecuteProc("sp_ds_SanPhamNhap");
+        }
     }
 }

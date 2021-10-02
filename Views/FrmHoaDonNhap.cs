@@ -276,7 +276,7 @@ namespace PMQLBanHang.Views
                     case 2: // quản lý
                         MessageBox.Show("Tính năng này chỉ cho phép Nhân Viên Kho!", "Thông Báo!"); break;
                     case 4:
-                        FrmChiTietHoaDonNhap frmChiTiet = new FrmChiTietHoaDonNhap();
+                        FrmChiTietHoaDonBanHang frmChiTiet = new FrmChiTietHoaDonBanHang();
                         frmChiTiet.Message = matk;
                         frmChiTiet.NumberHD = maHDSelected;
                         this.Hide();

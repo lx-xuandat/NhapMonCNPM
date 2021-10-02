@@ -64,10 +64,10 @@
             this.label10 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
+            this.avatar = new System.Windows.Forms.PictureBox();
             this.btn_Save = new System.Windows.Forms.Button();
             this.dgr_sanpham = new System.Windows.Forms.DataGridView();
-            this.avatar = new System.Windows.Forms.PictureBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lbnguoidung = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -79,8 +79,8 @@
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).BeginInit();
             this.SuspendLayout();
             // 
             // btn_chonanh
@@ -91,6 +91,7 @@
             this.btn_chonanh.TabIndex = 6;
             this.btn_chonanh.Text = "Chọn Ảnh";
             this.btn_chonanh.UseVisualStyleBackColor = true;
+            this.btn_chonanh.Click += new System.EventHandler(this.btn_chonanh_Click);
             // 
             // cbDonviTinh
             // 
@@ -304,6 +305,7 @@
             this.btn_Xoa.TabIndex = 11;
             this.btn_Xoa.Text = "Xóa";
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_sua
             // 
@@ -313,6 +315,7 @@
             this.btn_sua.TabIndex = 10;
             this.btn_sua.Text = "Sửa";
             this.btn_sua.UseVisualStyleBackColor = true;
+            this.btn_sua.Click += new System.EventHandler(this.btn_sua_Click);
             // 
             // label2
             // 
@@ -411,24 +414,6 @@
             this.label9.TabIndex = 0;
             this.label9.Text = "Số Lượng:";
             // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(167, 196);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(79, 45);
-            this.btn_Save.TabIndex = 4;
-            this.btn_Save.Text = "Lưu";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            // 
-            // dgr_sanpham
-            // 
-            this.dgr_sanpham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgr_sanpham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgr_sanpham.Location = new System.Drawing.Point(12, 327);
-            this.dgr_sanpham.Name = "dgr_sanpham";
-            this.dgr_sanpham.Size = new System.Drawing.Size(863, 245);
-            this.dgr_sanpham.TabIndex = 9;
-            // 
             // avatar
             // 
             this.avatar.Image = ((System.Drawing.Image)(resources.GetObject("avatar.Image")));
@@ -438,37 +423,61 @@
             this.avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.avatar.TabIndex = 2;
             this.avatar.TabStop = false;
+            this.avatar.Click += new System.EventHandler(this.avatar_Click);
             // 
-            // label12
+            // btn_Save
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(778, 27);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(86, 13);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Tên Người Dùng";
+            this.btn_Save.Location = new System.Drawing.Point(167, 196);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(79, 45);
+            this.btn_Save.TabIndex = 4;
+            this.btn_Save.Text = "Lưu";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // dgr_sanpham
+            // 
+            this.dgr_sanpham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgr_sanpham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgr_sanpham.Location = new System.Drawing.Point(12, 327);
+            this.dgr_sanpham.Name = "dgr_sanpham";
+            this.dgr_sanpham.Size = new System.Drawing.Size(863, 245);
+            this.dgr_sanpham.TabIndex = 9;
+            this.dgr_sanpham.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgr_sanpham_CellClick);
+            // 
+            // lbnguoidung
+            // 
+            this.lbnguoidung.AutoSize = true;
+            this.lbnguoidung.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbnguoidung.Location = new System.Drawing.Point(697, 19);
+            this.lbnguoidung.Name = "lbnguoidung";
+            this.lbnguoidung.Size = new System.Drawing.Size(105, 18);
+            this.lbnguoidung.TabIndex = 12;
+            this.lbnguoidung.Text = "Tên Người Dùng";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(680, 27);
+            this.label13.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(599, 19);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(79, 13);
+            this.label13.Size = new System.Drawing.Size(100, 18);
             this.label13.TabIndex = 11;
             this.label13.Text = "Người sử dụng:";
             // 
-            // FrmSanPham1
+            // FrmSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(887, 584);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lbnguoidung);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lbUser);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dgr_sanpham);
-            this.Name = "FrmSanPham1";
+            this.Name = "FrmSanPham";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý sản phẩm";
             this.Load += new System.EventHandler(this.FrmSanPham_Load);
             this.panel5.ResumeLayout(false);
@@ -490,8 +499,8 @@
             this.panel9.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.avatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgr_sanpham)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -537,7 +546,7 @@
         private System.Windows.Forms.PictureBox avatar;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.DataGridView dgr_sanpham;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lbnguoidung;
         private System.Windows.Forms.Label label13;
     }
 }
