@@ -15,7 +15,7 @@ namespace PMQLBanHang.Views
 {
     public partial class FrmSanPham : Form
     {
-        string filePath="";
+        string filePath = "";
         int matk;
         public int Message
         {
@@ -31,9 +31,7 @@ namespace PMQLBanHang.Views
 
         private void FrmSanPham_Load(object sender, EventArgs e)
         {
-            lbUser.Text = quanLyController.getUserName(matk);
-            //avatar.Image = Image.FromFile(Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\"+"1.jpg");
-            //MessageBox.Show(Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\");
+            lbnguoidung.Text = quanLyController.getUserName(matk);
             showSP();
             initComponents();
         }
@@ -56,7 +54,7 @@ namespace PMQLBanHang.Views
             txt_tensp.Text = "";
             txtGia.Text = "";
             txtSoluong.Text = "";
-            dtpNSX.Value =DateTime.Today;
+            dtpNSX.Value = DateTime.Today;
             dtpHSD.Value = DateTime.Today;
             avatar.Image = Image.FromFile(Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\" + "9400570_orig.png");
             btn_Save.Enabled = true;
@@ -74,7 +72,7 @@ namespace PMQLBanHang.Views
 
         private void avatar_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog  ofd = new OpenFileDialog() { Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*", ValidateNames = true, Multiselect = false })
+            using (OpenFileDialog ofd = new OpenFileDialog() { Filter = "jpg files (*.jpg)|*.jpg|All files (*.*)|*.*", ValidateNames = true, Multiselect = false })
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
@@ -86,7 +84,24 @@ namespace PMQLBanHang.Views
         }
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            saveImage();
+            if (isFullInfo())
+            {
+                if (MessageBox.Show("Bạn có thật sự muốn thêm không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    SanPham sanPham = new SanPham();
+                    sanPham = getSanPhamFromFrm();
+                    if (sanPhamController.addSanPham(sanPham) && saveImage())
+                    {
+                        refreshFrm();
+                        MessageBox.Show("Cập Nhật Thành Công !", "Thông Báo !");
+                    }
+                }
+            }
+        }
+
+        private void addSanPham()
+        {
+            
         }
 
         private bool saveImage()
@@ -115,6 +130,10 @@ namespace PMQLBanHang.Views
                         isSuccess = true;
                     }
                 }
+                else
+                {
+                    return true;
+                }
             }
             catch (Exception exp)
             {
@@ -123,7 +142,31 @@ namespace PMQLBanHang.Views
             }
             return isSuccess;
         }
+        private bool deleteImage()
+        {
 
+            bool isSuccess = false;
+            string appPath = Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\"; // <---
+            try
+            {
+                if (!fileName1.Text.Equals("fileName"))
+                {
+                    string iName = fileName1.Text;
+                    if (System.IO.File.Exists(appPath + iName))
+                    {
+                        File.Delete(appPath + iName); // delelte ảnh từ filePath tới apppath với tên iname
+                        return true;
+                    }
+                }
+
+            }
+            catch (Exception exp)
+            {
+                isSuccess = false;
+                MessageBox.Show("Unable to open file " + exp.Message);
+            }
+            return isSuccess;
+        }
         private void dgr_sanpham_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int soluongrow = dgr_sanpham.RowCount;
@@ -145,11 +188,12 @@ namespace PMQLBanHang.Views
                 dtpNSX.Text = dgr_sanpham.Rows[index].Cells[7].Value + "";
                 dtpHSD.Text = dgr_sanpham.Rows[index].Cells[8].Value + "";
                 string hinhanh = dgr_sanpham.Rows[index].Cells[9].Value + "";
-                if (hinhanh.Length==0)
+                if (hinhanh.Length == 0)
                 {
                     fileName1.Text = "fileName";
                     avatar.Image = Image.FromFile(Path.GetDirectoryName(Application.ExecutablePath) + @"\ProImages\" + "9400570_orig.png");
-                } else
+                }
+                else
                 {
                     fileName1.Text = hinhanh;
                     saveImage();
@@ -164,7 +208,7 @@ namespace PMQLBanHang.Views
         }
         private List<LoaiSanPham> getListLoaiSP()
         {
-            List<LoaiSanPham> loaiSanPhams =  sanPhamController.getListLoaiSP();
+            List<LoaiSanPham> loaiSanPhams = sanPhamController.getListLoaiSP();
             return loaiSanPhams;
         }
 
@@ -187,13 +231,15 @@ namespace PMQLBanHang.Views
 
         private bool isFullInfo()
         {
-            if (txt_tensp.Text.Length ==0)
+            if (txt_tensp.Text.Length == 0)
             {
                 MessageBox.Show("Tên Sản Phẩm Không được để trống!", "Thông Báo !"); return false;
-            } else if (txtSoluong.Text.Length == 0)
+            }
+            else if (txtSoluong.Text.Length == 0)
             {
                 MessageBox.Show("Hãy Nhập số lượng !", "Thông Báo !"); return false;
-            }  else
+            }
+            else
             {
                 return true;
             }
@@ -226,7 +272,7 @@ namespace PMQLBanHang.Views
             {
                 san.Hinhanh = fileName1.Text;
             }
-            
+
             return san;
         }
 
@@ -242,5 +288,27 @@ namespace PMQLBanHang.Views
                 }
             }
         }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            if (dgr_sanpham.CurrentRow.Selected == true)
+            {
+                if (MessageBox.Show("Bạn có thật sự muốn xóa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+                {
+                    SanPham sanPham = new SanPham();
+                    sanPham = getSanPhamFromFrm();
+                    if (sanPhamController.deleteSanPham(sanPham) && deleteImage())
+                    {
+                        refreshFrm();
+                        MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa Không Thành Công!", "Thông Báo !");
+                    }
+                }
+            }
+        }
+
     }
 }

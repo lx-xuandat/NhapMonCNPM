@@ -11,7 +11,7 @@ namespace PMQLBanHang
 {
     public class ConnectDB
     {
-        public string CnnString = "Data Source=DESKTOP-RTQ2N2T\\SQLEXPRESS;Initial Catalog=QuanLyCHTienLoi;Integrated Security=True";
+        public string CnnString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
         public DataTable ExecuteQuery(string query, Object[] parameters = null)
         {
             DataTable data = new DataTable();

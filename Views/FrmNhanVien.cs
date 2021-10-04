@@ -38,13 +38,14 @@ namespace PMQLBanHang.Views
 
         private void initComponents()
         {
-            txtMaNV.Text = getMaxMaNV().ToString();
+            txtMaNV.Text = "";
             txtTenNV.Text = "";
             rdFemale.Checked = true;
             txtAddress.Text = "";
             txtPhone.Text = "";
-            List<string> arrChucVu = nhanVienController.getListChucVu_by_MaTK(matk);
-            cbChucVu.DataSource=arrChucVu;
+            //List<string> arrChucVu = nhanVienController.getListChucVu_by_MaTK(matk);
+            //cbChucVu.DataSource=arrChucVu;
+            txtTrangThai.Text = "";
             dtpBirthday.Value = DateTime.Today;
             dtpStartdate.Value = DateTime.Today;
             btn_ThemNV.Enabled = true;
@@ -58,7 +59,6 @@ namespace PMQLBanHang.Views
         private void placeholder()
         {
         }
-
         private int getMaxMaNV()
         {
            
@@ -67,7 +67,7 @@ namespace PMQLBanHang.Views
 
         private void showNV(int matk)
         {
-            dgr_NhanVien.DataSource =  nhanVienController.getListNV(matk);
+            dgr_NhanVien.DataSource =  nhanVienController.getListNV();
         }
 
         private void dgr_NhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -86,7 +86,7 @@ namespace PMQLBanHang.Views
                 dtpBirthday.Text = dgr_NhanVien.Rows[index].Cells[4].Value + "";
                 dtpStartdate.Text= dgr_NhanVien.Rows[index].Cells[5].Value + "";
                 txtPhone.Text    = dgr_NhanVien.Rows[index].Cells[6].Value + "";
-                cbChucVu.Text   = dgr_NhanVien.Rows[index].Cells[7].Value + "";
+                txtTrangThai.Text   = dgr_NhanVien.Rows[index].Cells[7].Value + "";
                 
                 if (gioitinh.Equals("Nam"))
                 {
@@ -156,14 +156,14 @@ namespace PMQLBanHang.Views
         private NhanVien getNhanVienFromInfo()
         {
             NhanVien nhanvien = new NhanVien();
-            nhanvien.IMaNV = Convert.ToInt32(txtMaNV.Text);
+            nhanvien.IMaNV = Convert.ToInt32(txtMaNV.Text==""? "0" : txtMaNV.Text);
             nhanvien.STenNV = txtTenNV.Text;
             nhanvien.IGioiTinh = getGenderFromRadio();
             nhanvien.SQueQuan = txtAddress.Text;
             nhanvien.DNgaySinh = dtpBirthday.Value;
             nhanvien.DNgayVaoLam = dtpStartdate.Value;
             nhanvien.SSoDienThoai = txtPhone.Text;
-            nhanvien.SChucVu = cbChucVu.Text;
+            nhanvien.STrangThai = txtTrangThai.Text;
             return nhanvien;
         }
 
@@ -190,7 +190,7 @@ namespace PMQLBanHang.Views
             TimeSpan span = nhanvien.DNgayVaoLam - nhanvien.DNgaySinh;
             var x = nhanvien.STenNV.Trim().Length == 0 || nhanvien.SQueQuan.Trim().Length == 0
                 || Convert.ToDecimal(span.Days / 365) < 18 || nhanvien.DNgayVaoLam > DateTime.Today
-                || nhanvien.SSoDienThoai.Trim().Length == 0 || nhanvien.SChucVu.Trim().Length == 0;
+                || nhanvien.SSoDienThoai.Trim().Length == 0;
             if (x == true)
             {
                 return false;

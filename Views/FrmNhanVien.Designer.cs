@@ -32,7 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.cbChucVu = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -68,6 +67,7 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.LabelUser = new System.Windows.Forms.Label();
+            this.txtTrangThai = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgr_NhanVien)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -119,28 +119,21 @@
             // 
             // panel9
             // 
-            this.panel9.Controls.Add(this.cbChucVu);
+            this.panel9.Controls.Add(this.txtTrangThai);
             this.panel9.Controls.Add(this.label10);
             this.panel9.Location = new System.Drawing.Point(3, 311);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(278, 31);
             this.panel9.TabIndex = 8;
             // 
-            // cbChucVu
-            // 
-            this.cbChucVu.Location = new System.Drawing.Point(68, 3);
-            this.cbChucVu.Name = "cbChucVu";
-            this.cbChucVu.Size = new System.Drawing.Size(192, 21);
-            this.cbChucVu.TabIndex = 10;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(8, 9);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(51, 13);
+            this.label10.Size = new System.Drawing.Size(89, 13);
             this.label10.TabIndex = 0;
-            this.label10.Text = "Chức Vụ:";
+            this.label10.Text = "Đã có tài khoản?";
             // 
             // panel8
             // 
@@ -425,7 +418,7 @@
             this.txt_Serach.ForeColor = System.Drawing.SystemColors.InfoText;
             this.txt_Serach.Location = new System.Drawing.Point(54, 43);
             this.txt_Serach.Name = "txt_Serach";
-            this.txt_Serach.Size = new System.Drawing.Size(331, 25);
+            this.txt_Serach.Size = new System.Drawing.Size(365, 25);
             this.txt_Serach.TabIndex = 6;
             this.txt_Serach.TextChanged += new System.EventHandler(this.txt_Serach_TextChanged);
             this.txt_Serach.Enter += new System.EventHandler(this.txt_Serach_Enter);
@@ -433,7 +426,7 @@
             // 
             // btn_Search
             // 
-            this.btn_Search.Location = new System.Drawing.Point(407, 41);
+            this.btn_Search.Location = new System.Drawing.Point(436, 42);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(83, 26);
             this.btn_Search.TabIndex = 7;
@@ -458,6 +451,14 @@
             this.LabelUser.Size = new System.Drawing.Size(86, 13);
             this.LabelUser.TabIndex = 9;
             this.LabelUser.Text = "Tên Người Dùng";
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Enabled = false;
+            this.txtTrangThai.Location = new System.Drawing.Point(103, 6);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.Size = new System.Drawing.Size(157, 20);
+            this.txtTrangThai.TabIndex = 2;
             // 
             // FrmNhanVien
             // 
@@ -543,6 +544,6 @@
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label LabelUser;
-        private System.Windows.Forms.ComboBox cbChucVu;
+        private System.Windows.Forms.TextBox txtTrangThai;
     }
 }

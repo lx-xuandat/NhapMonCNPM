@@ -10,15 +10,19 @@ namespace PMQLBanHang.Controllers
     class NhanVienController
     {
         ConnectDB connectDB = new ConnectDB();
-        internal DataTable getListNV(int matk)
+        internal DataTable getListNV()
         {
-            string[] nameParams = new string[] { "@matk" };
-            Object[] valueParams = new Object[] { matk };
-            DataTable data = connectDB.ExecuteProc("sp_showNV_by_Chucvu", nameParams, valueParams);
+            //string[] nameParams = new string[] { "@matk" };
+            //Object[] valueParams = new Object[] { matk };
+            DataTable data = connectDB.ExecuteProc("sp_ds_NhanVien");
             //return changeGender(data);
             return data;
         }
-
+        internal DataTable getAllNhanVienNotTaiKhoan()
+        {
+            DataTable data = connectDB.ExecuteQuery("select * from tblNhanVien where trangthai=0 or trangthai is null");
+            return data;
+        }
         private DataTable changeGender(DataTable data)
         {
             for (int i=0;i<data.Rows.Count;i++)
@@ -60,15 +64,15 @@ namespace PMQLBanHang.Controllers
 
         internal bool addNhanVien(NhanVien nhanvien)
         {
-            //create proc sp_addNhanVien @ten nvarchar(100),@gioitinh int, @diachi nvarchar(100),@ngaysinh date, @ngaylam date,@sdt varchar(20),@chucvu nvarchar(50)
+            //create proc sp_them_NhanVien @ten nvarchar(100),@gioitinh int, @quequan nvarchar(100),@ngaysinh date, @ngayvaolam date,@sdt varchar(20)
             //as
             //begin
-
-            //    insert into tblNhanVien values(@ten, @gioitinh, @diachi, @ngaysinh, @ngaylam, @sdt, @chucvu)
+            //    insert into tblNhanVien values(@ten, @gioitinh, @quequan, @ngaysinh, @ngayvaolam, @sdt,null)
             //end
-            string nameProc = "sp_addNhanVien";
-            string[] nameParams = new string[] {"@ten", "@gioitinh", "@diachi", "@ngaysinh", "@ngaylam", "@sdt", "@chucvu" };
-            Object[] valuePrams = new Object[] { nhanvien.STenNV,nhanvien.IGioiTinh,nhanvien.SQueQuan,nhanvien.DNgaySinh,nhanvien.DNgayVaoLam,nhanvien.SSoDienThoai,nhanvien.SChucVu};
+            //go
+            string nameProc = "sp_them_NhanVien";
+            string[] nameParams = new string[] {"@ten", "@gioitinh", "@quequan", "@ngaysinh", "@ngayvaolam", "@sdt" };
+            Object[] valuePrams = new Object[] { nhanvien.STenNV,nhanvien.IGioiTinh,nhanvien.SQueQuan,nhanvien.DNgaySinh,nhanvien.DNgayVaoLam,nhanvien.SSoDienThoai};
             if (connectDB.ExecuteNonProc(nameProc, nameParams, valuePrams) != 1)
             {
                 return false;
@@ -81,9 +85,9 @@ namespace PMQLBanHang.Controllers
 
         internal bool updateNhanVien(NhanVien nhanvien)
         {
-            string nameProc = "sp_updateNhanVien";
-            string[] nameParams = new string[] {"@manv", "@ten", "@gioitinh", "@diachi", "@ngaysinh", "@ngaylam", "@sdt", "@chucvu" };
-            Object[] valuePrams = new Object[] { nhanvien.IMaNV,nhanvien.STenNV, nhanvien.IGioiTinh, nhanvien.SQueQuan, nhanvien.DNgaySinh, nhanvien.DNgayVaoLam, nhanvien.SSoDienThoai, nhanvien.SChucVu };
+            string nameProc = "sp_capnhat_NhanVien";
+            string[] nameParams = new string[] {"@manv", "@ten", "@gioitinh", "@diachi", "@ngaysinh", "@ngaylam", "@sdt" };
+            Object[] valuePrams = new Object[] { nhanvien.IMaNV,nhanvien.STenNV, nhanvien.IGioiTinh, nhanvien.SQueQuan, nhanvien.DNgaySinh, nhanvien.DNgayVaoLam, nhanvien.SSoDienThoai };
             if (connectDB.ExecuteNonProc(nameProc, nameParams, valuePrams) != 1)
             {
                 return false;
@@ -96,7 +100,7 @@ namespace PMQLBanHang.Controllers
 
         internal bool deleteNhanVien(NhanVien nhanvien)
         {
-            string nameProc = "sp_deleteNhanVien";
+            string nameProc = "sp_xoa_NhanVien";
             string[] nameParams = new string[] { "@manv" };
             Object[] valuePrams = new Object[] { nhanvien.IMaNV };
             if (connectDB.ExecuteNonProc(nameProc, nameParams, valuePrams) != 1)
@@ -113,7 +117,7 @@ namespace PMQLBanHang.Controllers
         {
             string[] nameParams = new string[] { "@matk","@key" };
             Object[] valueParams = new Object[] { matk,key};
-            DataTable data = connectDB.ExecuteProc("sp_Search_by_Chucvu", nameParams, valueParams);
+            DataTable data = connectDB.ExecuteProc("sp_timkiem_NhanVien", nameParams, valueParams);
             return data;
         }
     }

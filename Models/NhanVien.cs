@@ -25,7 +25,7 @@ namespace PMQLBanHang.Models
 		DateTime dNgaySinh;
 		DateTime dNgayVaoLam;
 		string sSoDienThoai;
-		string sChucVu;
+		string sTrangThai;
 
 		public int IMaNV { get => iMaNV; set => iMaNV = value; }
 		public string STenNV { get => sTenNV; set => sTenNV = value; }
@@ -34,6 +34,6 @@ namespace PMQLBanHang.Models
 		public DateTime DNgaySinh { get => dNgaySinh; set => dNgaySinh = value; }
 		public DateTime DNgayVaoLam { get => dNgayVaoLam; set => dNgayVaoLam = value; }
 		public string SSoDienThoai { get => sSoDienThoai; set => sSoDienThoai = value; }
-		public string SChucVu { get => sChucVu; set => sChucVu = value; }
+		public string STrangThai{ get => sTrangThai; set => sTrangThai = value; }
 	}
 }

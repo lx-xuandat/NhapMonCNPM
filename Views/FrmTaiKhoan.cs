@@ -15,6 +15,7 @@ namespace PMQLBanHang.Views
     public partial class FrmTaiKhoan : Form
     {
         int matk;
+        int matkSelected;
         public int Message
         {
             get { return matk; }
@@ -22,6 +23,7 @@ namespace PMQLBanHang.Views
         }
         QuanLyController quanLyController = new QuanLyController();
         TaiKhoanController taiKhoanController = new TaiKhoanController();
+        NhanVienController nhanVienController = new NhanVienController();
         public FrmTaiKhoan()
         {
             InitializeComponent();
@@ -36,26 +38,26 @@ namespace PMQLBanHang.Views
 
         private void initComponents()
         {
-            txtMatk.Text = getMaxMaTk().ToString();
+            matkSelected = -1;
             txtTaiKhoan.Text ="";
             txtMatKhau.Text = "";
-            txtChucVu.Text = "";
+            cbNhanVien.Text = "";
+            cbChucVu.DataSource = taiKhoanController.getAllChucVu();
+            cbChucVu.DisplayMember = "sTenLoaiTK";
+            cbChucVu.ValueMember = "iMaLoaiTK";
+            cbNhanVien.DataSource = nhanVienController.getAllNhanVienNotTaiKhoan();
+            cbNhanVien.DisplayMember = "sTenNV";
+            cbNhanVien.ValueMember = "iMaNV";
             btn_Them.Enabled = true;
             btn_Xoa.Enabled = false;
             btn_update.Enabled = false;
         }
 
-        private int getMaxMaTk()
-        {
-            int nextMaTK = taiKhoanController.getMaxMaTK()+1;
-            return nextMaTK;
-        }
 
         private void showNhanVien_TrangThai(int matk)
         {
             dgr_nhanvien_trangthai.DataSource = taiKhoanController.showNhanVien_TrangThai(matk);
         }
-
         private void label3_Click(object sender, EventArgs e)
         {
 
@@ -67,49 +69,23 @@ namespace PMQLBanHang.Views
             int index = dgr_nhanvien_trangthai.CurrentRow.Index;
             if (index < soluongrow - 1) // nếu nhấn vào hàng không có giá trị
             {
-                int manv      = Convert.ToInt32(dgr_nhanvien_trangthai.Rows[index].Cells[0].Value);
+                matkSelected = Convert.ToInt32(dgr_nhanvien_trangthai.Rows[index].Cells[0].Value); ;
+                int manv = Convert.ToInt32(dgr_nhanvien_trangthai.Rows[index].Cells[3].Value);
                 label10.Text = manv.ToString();
+                txtTaiKhoan.Text = dgr_nhanvien_trangthai.Rows[index].Cells[1].Value + "";
+                txtMatKhau.Text = dgr_nhanvien_trangthai.Rows[index].Cells[2].Value + "";
                 string trangthai = dgr_nhanvien_trangthai.Rows[index].Cells[3].Value+"";
-                if (trangthai.Trim().Length != 0)
-                {
-                    btn_Them.Enabled = false;
-                    btn_Xoa.Enabled = true;
-                    btn_update.Enabled = true;
-                    if (trangthai.Equals("0"))
-                    {
-                        initComponents();
-                        getChucVuFromMaNV(manv);
-                    } else
-                    {
-                        getTaiKhoanByManv(manv);
-                    }
-                }
-                else
-                {
-                    initComponents();
-                    getChucVuFromMaNV(manv);
-                }
-
+                cbNhanVien.Text = dgr_nhanvien_trangthai.Rows[index].Cells[4].Value + "";
+                cbChucVu.Text = dgr_nhanvien_trangthai.Rows[index].Cells[5].Value + "";
+                btn_Them.Enabled = false;
+                btn_Xoa.Enabled = true;
+                btn_update.Enabled = true;
             }
             else
             {
                 label10.Text = "Mã NV"; 
                 initComponents();
             }
-        }
-
-        private void getChucVuFromMaNV(int manv) // cho nhân viên chưa mã loại tk
-        {
-            txtChucVu.Text = taiKhoanController.getChucVuFromMaNV(manv);
-        }
-
-        private void getTaiKhoanByManv(int manv)// cho nhân viên đã có mã loại tk 
-        {
-            TaiKhoan taiKhoan = taiKhoanController.getAccountByMaNV(manv);
-            txtMatk.Text = taiKhoan.Matk.ToString();
-            txtTaiKhoan.Text = taiKhoan.Tendangnhap;
-            txtMatKhau.Text = taiKhoan.Matkhau;
-            txtChucVu.Text = getChucVuFromMaLoaiTK(taiKhoan.Maloaitk);
         }
 
         private string getChucVuFromMaLoaiTK(int maloaitk)
@@ -128,33 +104,20 @@ namespace PMQLBanHang.Views
 
         private void btn_Them_Click(object sender, EventArgs e)
         {
-            if (dgr_nhanvien_trangthai.CurrentRow.Selected == true)
+            TaiKhoan taiKhoan = new TaiKhoan();
+            taiKhoan = getTaiKhoanFromInfo();
+            if (checkInfo(taiKhoan))
             {
-                if (txtChucVu.Text.Equals("chưa có chức vụ"))
-                {
-                    MessageBox.Show("Nhân viên này chưa có chức vụ, hãy thêm chức vụ trước!", "Thông Báo !");
+                if (taiKhoanController.addAccount(taiKhoan) == 2)// thêm tài khoản nhớ thay đổi cả trạng thái ở bảng nhân viên
+                {// bằng 2 vì 2 dòng bị ảnh hưởng
+                    MessageBox.Show("Thêm Thành Công!", "Thông Báo !");
+                    RefreshFrm();
                 }
                 else
                 {
-                    TaiKhoan taiKhoan = new TaiKhoan();         
-                    taiKhoan = getTaiKhoanFromInfo();
-                    if (checkInfo(taiKhoan))
-                    {
-                        if (taiKhoanController.addAccount(taiKhoan) == 2)// thêm tài khoản nhớ thay đổi cả trạng thái ở bảng nhân viên
-                        {// bằng 2 vì 2 dòng bị ảnh hưởng
-                            MessageBox.Show("Thêm Thành Công!", "Thông Báo !");
-                            RefreshFrm();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Thêm Không Thành Công!", "Thông Báo !");
-                        }
-
-                    }
+                    MessageBox.Show("Thêm Không Thành Công!", "Thông Báo !");
                 }
-            } else
-            {
-                MessageBox.Show("Hãy Chọn Nhân Viên Chưa Có Tài Khoản !","Thông Báo !");
+
             }
         }
 
@@ -240,11 +203,12 @@ namespace PMQLBanHang.Views
         private TaiKhoan getTaiKhoanFromInfo()
         {
             TaiKhoan x = new TaiKhoan();
-            x.Manv = Convert.ToInt32(dgr_nhanvien_trangthai.CurrentRow.Cells[0].Value);
-            x.Matk = Convert.ToInt32(txtMatk.Text);
+            string avc = cbNhanVien.SelectedValue+"";
+            x.Manv = Convert.ToInt32(cbNhanVien.SelectedValue);
+            x.Matk =  matkSelected;
             x.Tendangnhap = txtTaiKhoan.Text;
             x.Matkhau = txtMatKhau.Text;
-            x.Maloaitk = getMaLoaiTKFromCV(dgr_nhanvien_trangthai.CurrentRow.Cells[2].Value);
+            x.Maloaitk = Convert.ToInt32(cbChucVu.SelectedValue);
             return x;
         }
 
@@ -268,6 +232,11 @@ namespace PMQLBanHang.Views
                 }
             }
             
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

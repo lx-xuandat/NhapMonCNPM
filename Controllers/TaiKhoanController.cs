@@ -14,9 +14,9 @@ namespace PMQLBanHang.Controllers
         ConnectDB connectDB = new ConnectDB();
         internal object showNhanVien_TrangThai(int matk)
         {
-            string[] nameParams = new string[] { "@matk" };
-            Object[] valueParams = new Object[] { matk };
-            DataTable data = connectDB.ExecuteProc("sp_show_NhanVien_trangthai", nameParams, valueParams);
+            //string[] nameParams = new string[] { "@matk" };
+            //Object[] valueParams = new Object[] { matk };
+            DataTable data = connectDB.ExecuteProc("sp_ds_TaiKhoan");
             //return changeGender(data);
             return data;
         }
@@ -35,17 +35,24 @@ namespace PMQLBanHang.Controllers
             return taiKhoan;
         }
 
-        internal int getMaxMaTK()
-        {
-            string query = "select max(a.iMaTK) from tblTaiKhoan a";
-            return Convert.ToInt32(connectDB.ExecuteScalar(query));
-        }
 
+        public DataTable getAllChucVu()
+        {
+            string query = "select * from tblLoaiTaiKhoan where iMaLoaiTK!=1";
+            return connectDB.ExecuteQuery(query);
+        }
         internal string getChucVuFromMaNV(int manv)
         {
+            //create proc sp_xem_ChucVu_tu_MaNV @manv int
+            //as begin
+            //select a.sTenLoaiTK from tblLoaiTaiKhoan a, tblNhanVien b, tblTaiKhoan c
+            //where b.iMaNV = c.iMaNV and c.iMaLoaiTK = a.iMaLoaiTK and b.iMaNV = @manv
+            //end
             string result = "";
-            string query = "select a.sChucVu from tblNhanVien a where a.iMaNV ="+manv;
-            switch (connectDB.ExecuteScalar(query).ToString())
+            string[] nameParams = new string[] { "@manv"};
+            Object[] valueParams = new Object[] { manv };
+            DataTable resultChucVu =  connectDB.ExecuteProc("sp_xem_ChucVu_tu_MaNV", nameParams, valueParams);
+            switch (resultChucVu.Rows[0][0].ToString())
             {
                 case "chusohuu": result = "Chủ Sở Hữu"; break;
                 case "nhanvienkho": result = "Nhân Viên Kho"; break;
@@ -59,65 +66,58 @@ namespace PMQLBanHang.Controllers
         internal int addAccount(TaiKhoan x)
         {
             #region
-            //create proc sp_add_Account_and_changeStatus @tendangnhap nvarchar(50),@matkhau nvarchar(50),@maloaitk int, @manv int
+            //create proc sp_them_TaiKhoan @tendangnhap nvarchar(50),@matkhau nvarchar(50),@maloaitk int, @manv int
             //as
-            // begin
-
+            //    begin
             //    insert into tblTaiKhoan values(@tendangnhap, @matkhau, @maloaitk, @manv);
             //            update tblNhanVien
-
             //    set trangthai = 1
-
             //    where iMaNV = @manv
-            // end
+            //    end
+            //    go
             #endregion
-            string nameProc = "sp_add_Account_and_changeStatus";// ko dùng mã nv vì tự tăng
+            string nameProc = "sp_them_TaiKhoan";// ko dùng mã nv vì tự tăng
             string[] nameParams = new string[] { "@tendangnhap", "@matkhau", "@maloaitk","@manv" };
             Object[] valueParams = new Object[] { x.Tendangnhap,x.Matkhau,x.Maloaitk,x.Manv };
-            //MessageBox.Show(x.Tendangnhap+ x.Matkhau+ x.Maloaitk+ x.Manv);
             return connectDB.ExecuteNonProc(nameProc, nameParams, valueParams); 
         }
 
         internal int deleteAccount(TaiKhoan taikhoan)
         {
-            #region    //create proc sp_delete_Account_and_changeStatus @matk int, @manv int
-            //    as
-            //     begin
-
-            //        delete
-            //        from tblTaiKhoan
-            //        where iMaTK = @matk
-
-            //        update tblNhanVien
-
-            //        set trangthai = 0
-
-            //        where iMaNV = @manv
-            //     end
+            #region   
+            //create proc sp_xoa_TaiKhoan @matk int
+            //as
+            // begin
+            //    declare @manv int
+            //    set @manv = (select iMaNV from tblTaiKhoan where iMaTK = @matk)
+	           // delete
+            //    from tblTaiKhoan
+            //    where iMaTK = @matk
+            //    update tblNhanVien
+            //    set trangthai = 0
+            //    where iMaNV = @manv
+            // end
             #endregion
-            string nameProc = "sp_delete_Account_and_changeStatus";
-            string[] nameParams = new string[] { "@matk", "@manv" };
-            Object[] valueParams = new Object[] { taikhoan.Matk, taikhoan.Manv};
+            string nameProc = "sp_xoa_TaiKhoan";
+            string[] nameParams = new string[] { "@matk"};
+            Object[] valueParams = new Object[] { taikhoan.Matk};
             return connectDB.ExecuteNonProc(nameProc, nameParams, valueParams);
         }
 
         internal int updateAccount(TaiKhoan taikhoan)
         {
-            #region  //create proc sp_update_Account @matk int, @tendangnhap varchar(50),@matkhau varchar(50)
+            #region  
+            //create proc sp_capnhat_TaiKhoan @matk int, @tendangnhap varchar(50),@matkhau varchar(50), @maloaitk int
             //as
             // begin
-
-
             //    update tblTaiKhoan
-
-            //    set STenDangNhap = @tendangnhap, sMatKhau = @matkhau
-
+            //    set STenDangNhap = @tendangnhap, sMatKhau = @matkhau, iMaloaiTk = @maloaitk
             //    where iMaTK = @matk
             // end
             #endregion
-            string nameProc = "sp_update_Account";
-            string[] nameParams = new string[] { "@matk", "@tendangnhap", "@matkhau" };
-            Object[] valueParams = new Object[] { taikhoan.Matk, taikhoan.Tendangnhap,taikhoan.Matkhau };
+            string nameProc = "sp_capnhat_TaiKhoan";
+            string[] nameParams = new string[] { "@matk", "@tendangnhap", "@matkhau", "@maloaitk" };
+            Object[] valueParams = new Object[] { taikhoan.Matk, taikhoan.Tendangnhap,taikhoan.Matkhau,taikhoan.Maloaitk };
             return connectDB.ExecuteNonProc(nameProc, nameParams, valueParams);
         }
     }
