@@ -1,4 +1,4 @@
-﻿using PMQLBanHang.Models;
+﻿using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PMQLBanHang.Controllers
+namespace PMQLBanHang.BUS
 {
-    class TaiKhoanController
+    class TaiKhoanBUS
     {
         ConnectDB connectDB = new ConnectDB();
         internal object showNhanVien_TrangThai(int matk)

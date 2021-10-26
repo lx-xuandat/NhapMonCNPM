@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMQLBanHang.Controllers
+namespace PMQLBanHang.BUS
 {
-    class LoginController
+    class LoginBUS
     {
         public DataTable checklogin(string tendangnhap, string matkhau)
         {

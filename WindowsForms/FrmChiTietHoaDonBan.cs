@@ -1,5 +1,5 @@
-﻿using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+﻿using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,9 +28,9 @@ namespace PMQLBanHang.Views
             get { return maHD; }
             set { maHD = value; }
         }
-        QuanLyController quanLyController = new QuanLyController();
-        SanPhamController sanPhamController = new SanPhamController();
-        ChiTietHoaDonBanController ChiTietHoaDonBanController = new ChiTietHoaDonBanController();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
+        SanPhamBUS sanPhamBUS = new SanPhamBUS();
+        ChiTietHoaDonBanBUS ChiTietHoaDonBanBUS = new ChiTietHoaDonBanBUS();
         public FrmChiTietHoaDonBan()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace PMQLBanHang.Views
         }
         private void FrmChiTietHoaDonBan_Load(object sender, EventArgs e)
         {
-            lbUser.Text = quanLyController.getUserName(matk);
+            lbUser.Text = quanLyBUS .getUserName(matk);
             initComponents();
         }
 
@@ -55,13 +55,13 @@ namespace PMQLBanHang.Views
             tongtien = -1;
             maspSelected =-1;
             txtSohd.Text = maHD + "";
-            dgrMatHang.DataSource = ChiTietHoaDonBanController.getListSPBan(maHD);
-            dgrChiTietHang.DataSource = ChiTietHoaDonBanController.getListSPBanInCTHD(maHD);
+            dgrMatHang.DataSource = ChiTietHoaDonBanBUS .getListSPBan(maHD);
+            dgrChiTietHang.DataSource = ChiTietHoaDonBanBUS .getListSPBanInCTHD(maHD);
             txtgia.Enabled = false;
             txtMahang.Enabled = false;
             txtTenhang.Enabled = false;
             btnThem.Enabled = false;
-            txtTongtien.Text = ChiTietHoaDonBanController.getTongTienHD(maHD)+"";
+            txtTongtien.Text = ChiTietHoaDonBanBUS .getTongTienHD(maHD)+"";
             btnXoaSanPham.Enabled = false;
             
         }
@@ -95,7 +95,7 @@ namespace PMQLBanHang.Views
             if (dgrMatHang.CurrentRow.Selected == true)
             {
                 ChiTietHoaDonBan x =  getChiTietHoaDonBanFromForm();
-                if (ChiTietHoaDonBanController.addSanPhamOrUpdateQuality(x)>0)
+                if (ChiTietHoaDonBanBUS.addSanPhamOrUpdateQuality(x)>0)
                 {
                     MessageBox.Show("Thêm thành công!", "Thông Báo!");
                     RefreshFrm();
@@ -137,7 +137,7 @@ namespace PMQLBanHang.Views
             if (dgrChiTietHang.CurrentRow.Selected == true && maspSelected!=-1)
             {
                 
-                if (ChiTietHoaDonBanController.deleteSanPhamInChiTietHoaDon(maHD,maspSelected,tongtien) > 0)
+                if (ChiTietHoaDonBanBUS .deleteSanPhamInChiTietHoaDon(maHD,maspSelected,tongtien) > 0)
                 {
                     MessageBox.Show("Xóa thành công!", "Thông Báo!");
                     RefreshFrm();

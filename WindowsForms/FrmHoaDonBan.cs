@@ -1,5 +1,5 @@
-﻿using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+﻿using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,22 +22,22 @@ namespace PMQLBanHang.Views
             get { return matk; }
             set { matk = value; }
         }
-        QuanLyController quanLyController = new QuanLyController();
-        HoaDonBanHangController banHangController = new HoaDonBanHangController();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
+        HoaDonBanHangBUS banHangBUS = new HoaDonBanHangBUS();
         public FrmHoaDonBan()
         {
             InitializeComponent();
         }
         private void FrmHoaDonBan_Load(object sender, EventArgs e)
         {
-            lbUser.Text = quanLyController.getUserName(matk);
-            maloaitk = banHangController.getMaloaiFromMaTK(matk);
+            lbUser.Text = quanLyBUS.getUserName(matk);
+            maloaitk = banHangBUS.getMaloaiFromMaTK(matk);
             showDSHD();
             initComponents();
         }
         private void showDSHD()
         {
-            dgr_hoadonban.DataSource = banHangController.getListHD();
+            dgr_hoadonban.DataSource = banHangBUS.getListHD();
         }
         private void initComponents()
         {
@@ -45,7 +45,7 @@ namespace PMQLBanHang.Views
             lbMaHD.Text = "Mã HD";
             maHDSelected = -1;
             cbNhanVien.Enabled = true;
-            cbNhanVien.DataSource = banHangController.getListNhanVienBanHang();
+            cbNhanVien.DataSource = banHangBUS.getListNhanVienBanHang();
             cbNhanVien.DisplayMember = "sTenNV";
             cbNhanVien.ValueMember = "iMaNV";
             cbNhanVien.Text = "";
@@ -107,7 +107,7 @@ namespace PMQLBanHang.Views
                 {
                     HoaDonBan donBan = new HoaDonBan();
                     donBan = getDonBanFromForm();
-                    if (banHangController.addHoaDonBan(donBan))
+                    if (banHangBUS.addHoaDonBan(donBan))
                     {
                         MessageBox.Show("Thêm Thành Công!", "Thông Baso1");
                         RefreshFrm();
@@ -135,7 +135,7 @@ namespace PMQLBanHang.Views
                         {
                             HoaDonBan hoaDon = new HoaDonBan();
                             hoaDon = getDonBanFromForm();
-                            if (banHangController.updateHoaDonBan(hoaDon))
+                            if (banHangBUS.updateHoaDonBan(hoaDon))
                             {
                                 RefreshFrm();
                                 MessageBox.Show("Cập Nhật thành công!", "Thông Báo !");
@@ -167,7 +167,7 @@ namespace PMQLBanHang.Views
                     if (MessageBox.Show("Bạn có thật sự muốn xóa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                     {
                         // xóa hóa đơn và chi tiết hóa đơn
-                        if (banHangController.deleteHoaDonBanHang(maHDSelected + ""))
+                        if (banHangBUS.deleteHoaDonBanHang(maHDSelected + ""))
                         {
                             RefreshFrm();
                             MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -186,7 +186,7 @@ namespace PMQLBanHang.Views
             {
                 if (MessageBox.Show("Xác Nhận Thanh Toán!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (banHangController.ThanhToan(lbMaHD.Text))
+                    if (banHangBUS.ThanhToan(lbMaHD.Text))
                     {
                         MessageBox.Show("Thanh Toán Thành Công!", "Thông Báo!");
                         RefreshFrm();
@@ -249,7 +249,7 @@ namespace PMQLBanHang.Views
 
         private void showChiTietHoaDonByMaHD(int maHDSelected)
         {
-            dgr_chitiet_hdb.DataSource = banHangController.showChiTietHD(maHDSelected);
+            dgr_chitiet_hdb.DataSource = banHangBUS.showChiTietHD(maHDSelected);
         }
 
         private void btn_Detail_Click(object sender, EventArgs e)

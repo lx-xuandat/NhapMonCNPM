@@ -1,4 +1,4 @@
-﻿using PMQLBanHang.Models;
+﻿using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -6,9 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMQLBanHang.Controllers
+namespace PMQLBanHang.BUS
 {
-    class SanPhamController
+    class SanPhamBUS
     {
         ConnectDB connectDB = new ConnectDB();
 

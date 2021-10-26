@@ -1,4 +1,4 @@
-﻿using PMQLBanHang.Controllers;
+﻿using PMQLBanHang.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,9 +25,9 @@ namespace PMQLBanHang.Views
             get { return maHD; }
             set { maHD = value; }
         }
-        QuanLyController quanLyController = new QuanLyController();
-        SanPhamController sanPhamController = new SanPhamController();
-        ChiTietHoaDonBanController ChiTietHoaDonNhapController = new ChiTietHoaDonBanController();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
+        SanPhamBUS sanPhamBUS = new SanPhamBUS();
+        ChiTietHoaDonBanBUS ChiTietHoaDonNhapBUS = new ChiTietHoaDonBanBUS();
         public FrmChiTietHoaDonBanHang()
         {
             InitializeComponent();
@@ -35,15 +35,15 @@ namespace PMQLBanHang.Views
 
         private void FrmChiTietHoaDonNhap_Load(object sender, EventArgs e)
         {
-            lbUser.Text = quanLyController.getUserName(matk);
+            lbUser.Text = quanLyBUS.getUserName(matk);
            
             initComponents();
         }
         private void initComponents()
         {
             txtSohd.Text = maHD + "";
-            dgrMatHang.DataSource = sanPhamController.getListSP();
-            dgrChiTietHang.DataSource = ChiTietHoaDonNhapController.getListSPBanInCTHD(maHD);
+            dgrMatHang.DataSource = sanPhamBUS.getListSP();
+            dgrChiTietHang.DataSource = ChiTietHoaDonNhapBUS.getListSPBanInCTHD(maHD);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
