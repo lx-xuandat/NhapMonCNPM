@@ -54,81 +54,81 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectDB.cs" />
-    <Compile Include="Controllers\ChiTietHoaDonBanController.cs" />
-    <Compile Include="Controllers\ChiTietHoaDonNhapController.cs" />
-    <Compile Include="Controllers\HoaDonBanHangController.cs" />
-    <Compile Include="Controllers\HoaDonNhapController.cs" />
-    <Compile Include="Controllers\SanPhamController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\NhanVienController.cs" />
-    <Compile Include="Controllers\QuanLyController.cs" />
-    <Compile Include="Controllers\TaiKhoanController.cs" />
-    <Compile Include="Models\ChiTietHoaDonBan.cs" />
-    <Compile Include="Models\ChiTietHoaDonNhap.cs" />
-    <Compile Include="Models\HoaDonBan.cs" />
-    <Compile Include="Models\HoaDonNhap.cs" />
-    <Compile Include="Models\LoaiSanPham.cs" />
-    <Compile Include="Models\NCC.cs" />
-    <Compile Include="Models\NhanVien.cs" />
-    <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Views\DangNhap.cs">
+    <Compile Include="BUS\ChiTietHoaDonBanBUS.cs" />
+    <Compile Include="BUS\ChiTietHoaDonNhapBUS.cs" />
+    <Compile Include="BUS\HoaDonBanHangBUS.cs" />
+    <Compile Include="BUS\HoaDonNhapBUS.cs" />
+    <Compile Include="BUS\SanPhamBUS.cs" />
+    <Compile Include="BUS\LoginBUS.cs" />
+    <Compile Include="BUS\NhanVienBUS.cs" />
+    <Compile Include="BUS\QuanLyBUS.cs" />
+    <Compile Include="BUS\TaiKhoanBUS.cs" />
+    <Compile Include="DTO\ChiTietHoaDonBan.cs" />
+    <Compile Include="DTO\ChiTietHoaDonNhap.cs" />
+    <Compile Include="DTO\HoaDonBan.cs" />
+    <Compile Include="DTO\HoaDonNhap.cs" />
+    <Compile Include="DTO\LoaiSanPham.cs" />
+    <Compile Include="DTO\NCC.cs" />
+    <Compile Include="DTO\NhanVien.cs" />
+    <Compile Include="DTO\SanPham.cs" />
+    <Compile Include="WindowsForms\DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\DangNhap.Designer.cs">
+    <Compile Include="WindowsForms\DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="DTO\TaiKhoan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\FrmChiTietHoaDonBan.cs">
+    <Compile Include="WindowsForms\FrmChiTietHoaDonBan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmChiTietHoaDonBan.Designer.cs">
+    <Compile Include="WindowsForms\FrmChiTietHoaDonBan.Designer.cs">
       <DependentUpon>FrmChiTietHoaDonBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmChiTietHoaDonNhap.cs">
+    <Compile Include="WindowsForms\FrmChiTietHoaDonNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmChiTietHoaDonNhap.Designer.cs">
+    <Compile Include="WindowsForms\FrmChiTietHoaDonNhap.Designer.cs">
       <DependentUpon>FrmChiTietHoaDonNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmHoaDonBan.cs">
+    <Compile Include="WindowsForms\FrmHoaDonBan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmHoaDonBan.Designer.cs">
+    <Compile Include="WindowsForms\FrmHoaDonBan.Designer.cs">
       <DependentUpon>FrmHoaDonBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmHoaDonNhap.cs">
+    <Compile Include="WindowsForms\FrmHoaDonNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmHoaDonNhap.Designer.cs">
+    <Compile Include="WindowsForms\FrmHoaDonNhap.Designer.cs">
       <DependentUpon>FrmHoaDonNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmNhanVien.cs">
+    <Compile Include="WindowsForms\FrmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmNhanVien.Designer.cs">
+    <Compile Include="WindowsForms\FrmNhanVien.Designer.cs">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmQuanLy.cs">
+    <Compile Include="WindowsForms\FrmQuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmQuanLy.Designer.cs">
+    <Compile Include="WindowsForms\FrmQuanLy.Designer.cs">
       <DependentUpon>FrmQuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmSanPham.cs">
+    <Compile Include="WindowsForms\FrmSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmSanPham.Designer.cs">
+    <Compile Include="WindowsForms\FrmSanPham.Designer.cs">
       <DependentUpon>FrmSanPham.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\FrmTaiKhoan.cs">
+    <Compile Include="WindowsForms\FrmTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\FrmTaiKhoan.Designer.cs">
+    <Compile Include="WindowsForms\FrmTaiKhoan.Designer.cs">
       <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Views\DangNhap.resx">
+    <EmbeddedResource Include="WindowsForms\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -141,28 +141,28 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Views\FrmChiTietHoaDonBan.resx">
+    <EmbeddedResource Include="WindowsForms\FrmChiTietHoaDonBan.resx">
       <DependentUpon>FrmChiTietHoaDonBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmChiTietHoaDonNhap.resx">
+    <EmbeddedResource Include="WindowsForms\FrmChiTietHoaDonNhap.resx">
       <DependentUpon>FrmChiTietHoaDonNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmHoaDonBan.resx">
+    <EmbeddedResource Include="WindowsForms\FrmHoaDonBan.resx">
       <DependentUpon>FrmHoaDonBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmHoaDonNhap.resx">
+    <EmbeddedResource Include="WindowsForms\FrmHoaDonNhap.resx">
       <DependentUpon>FrmHoaDonNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmNhanVien.resx">
+    <EmbeddedResource Include="WindowsForms\FrmNhanVien.resx">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmQuanLy.resx">
+    <EmbeddedResource Include="WindowsForms\FrmQuanLy.resx">
       <DependentUpon>FrmQuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmSanPham.resx">
+    <EmbeddedResource Include="WindowsForms\FrmSanPham.resx">
       <DependentUpon>FrmSanPham.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\FrmTaiKhoan.resx">
+    <EmbeddedResource Include="WindowsForms\FrmTaiKhoan.resx">
       <DependentUpon>FrmTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

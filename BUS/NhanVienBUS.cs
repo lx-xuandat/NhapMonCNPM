@@ -1,13 +1,13 @@
-﻿using PMQLBanHang.Models;
+﻿using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace PMQLBanHang.Controllers
+namespace PMQLBanHang.BUS
 {
-    class NhanVienController
+    class NhanVienBUS
     {
         ConnectDB connectDB = new ConnectDB();
         internal DataTable getListNV()

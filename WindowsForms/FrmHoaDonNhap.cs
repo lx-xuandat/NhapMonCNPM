@@ -1,5 +1,5 @@
-﻿using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+﻿using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +22,8 @@ namespace PMQLBanHang.Views
             get { return matk; }
             set { matk = value; }
         }
-        QuanLyController quanLyController = new QuanLyController();
-        HoaDonNhapController nhapController = new HoaDonNhapController();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
+        HoaDonNhapBUS nhapBUS = new HoaDonNhapBUS();
         public FrmHoaDonNhap()
         {
             InitializeComponent();
@@ -31,8 +31,8 @@ namespace PMQLBanHang.Views
 
         private void FrmHoaDonNhap_Load(object sender, EventArgs e)
         {
-            lbUser.Text = quanLyController.getUserName(matk);
-            maloaitk = nhapController.getMaloaiFromMaTK(matk);
+            lbUser.Text = quanLyBUS.getUserName(matk);
+            maloaitk = nhapBUS.getMaloaiFromMaTK(matk);
             showDSHD();
             initComponents();
 
@@ -40,7 +40,7 @@ namespace PMQLBanHang.Views
 
         private void showDSHD()
         {
-            dgr_hoadonnhap.DataSource = nhapController.getListHD();
+            dgr_hoadonnhap.DataSource = nhapBUS.getListHD();
         }
 
         private void dgr_hoadonnhap_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -90,7 +90,7 @@ namespace PMQLBanHang.Views
 
         private void showChiTietHoaDonByMaHD(int mahd)
         {
-            dgr_chitiet_hdn.DataSource = nhapController.showChiTietHD(mahd);
+            dgr_chitiet_hdn.DataSource = nhapBUS.showChiTietHD(mahd);
         }
 
         private void initComponents()
@@ -99,7 +99,7 @@ namespace PMQLBanHang.Views
             lbMaHD.Text = "Mã HD";
             maHDSelected = -1;
             cbNhanVien.Enabled = true;
-            cbNhanVien.DataSource = nhapController.getListNhanVienKho();
+            cbNhanVien.DataSource = nhapBUS.getListNhanVienKho();
             cbNhanVien.DisplayMember = "sTenNV";
             cbNhanVien.ValueMember = "iMaNV";
             cbNhanVien.Text = "";
@@ -121,7 +121,7 @@ namespace PMQLBanHang.Views
 
         private int getNextMaHD()
         {
-            int result = nhapController.getMaxMHDN() + 1;
+            int result = nhapBUS.getMaxMHDN() + 1;
             return result;
         }
 
@@ -133,7 +133,7 @@ namespace PMQLBanHang.Views
                 {
                     HoaDonNhap donNhap = new HoaDonNhap();
                     donNhap = getDonNhapFromForm();
-                    if (nhapController.addHoaDonNhap(donNhap))
+                    if (nhapBUS.addHoaDonNhap(donNhap))
                     {
                         MessageBox.Show("Thêm Thành Công!", "Thông Baso1");
                         RefreshFrm();
@@ -196,7 +196,7 @@ namespace PMQLBanHang.Views
                         {
                             HoaDonNhap hoaDonNhap = new HoaDonNhap();
                             hoaDonNhap = getDonNhapFromForm();
-                            if (nhapController.updateHoaDonNhap(hoaDonNhap))
+                            if (nhapBUS.updateHoaDonNhap(hoaDonNhap))
                             {
                                 RefreshFrm();
                                 MessageBox.Show("Cập Nhật thành công!", "Thông Báo !");
@@ -230,7 +230,7 @@ namespace PMQLBanHang.Views
                         if (isContainChiTietHD(maHDSelected+""))
                         {
                             // xóa hóa đơn và chi tiết hóa đơn
-                            if (nhapController.deleteTwoTable(maHDSelected + ""))
+                            if (nhapBUS.deleteTwoTable(maHDSelected + ""))
                             {
                                 RefreshFrm();
                                 MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -243,7 +243,7 @@ namespace PMQLBanHang.Views
                         else
                         {
                             // xóa hóa đơn
-                            if (nhapController.deleteOneTable(maHDSelected + ""))
+                            if (nhapBUS.deleteOneTable(maHDSelected + ""))
                             {
                                 RefreshFrm();
                                 MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -264,7 +264,7 @@ namespace PMQLBanHang.Views
 
         private bool isContainChiTietHD(string mahd)
         {
-            return nhapController.checkExistsCTHD(mahd);
+            return nhapBUS.checkExistsCTHD(mahd);
         }
 
         private void btn_Detail_Click(object sender, EventArgs e)
@@ -298,7 +298,7 @@ namespace PMQLBanHang.Views
             {
                 if (MessageBox.Show("Xác Nhận Thanh Toán!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (nhapController.ThanhToan(lbMaHD.Text)) {
+                    if (nhapBUS.ThanhToan(lbMaHD.Text)) {
                         MessageBox.Show("Thanh Toán Thành Công!", "Thông Báo!");
                     }
                 }

@@ -1,5 +1,5 @@
-﻿using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+﻿using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,9 +21,9 @@ namespace PMQLBanHang.Views
             get { return matk; }
             set { matk = value; }
         }
-        QuanLyController quanLyController = new QuanLyController();
-        TaiKhoanController taiKhoanController = new TaiKhoanController();
-        NhanVienController nhanVienController = new NhanVienController();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
+        TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
+        NhanVienBUS nhanVienBUS = new NhanVienBUS();
         public FrmTaiKhoan()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace PMQLBanHang.Views
 
         private void FrmTaiKhoan_Load(object sender, EventArgs e)
         {
-            LabelUser.Text = quanLyController.getUserName(matk);
+            LabelUser.Text = quanLyBUS.getUserName(matk);
             showNhanVien_TrangThai(matk);
             initComponents();
         }
@@ -42,10 +42,10 @@ namespace PMQLBanHang.Views
             txtTaiKhoan.Text ="";
             txtMatKhau.Text = "";
             cbNhanVien.Text = "";
-            cbChucVu.DataSource = taiKhoanController.getAllChucVu();
+            cbChucVu.DataSource = taiKhoanBUS.getAllChucVu();
             cbChucVu.DisplayMember = "sTenLoaiTK";
             cbChucVu.ValueMember = "iMaLoaiTK";
-            cbNhanVien.DataSource = nhanVienController.getAllNhanVienNotTaiKhoan();
+            cbNhanVien.DataSource = nhanVienBUS.getAllNhanVienNotTaiKhoan();
             cbNhanVien.DisplayMember = "sTenNV";
             cbNhanVien.ValueMember = "iMaNV";
             btn_Them.Enabled = true;
@@ -56,7 +56,7 @@ namespace PMQLBanHang.Views
 
         private void showNhanVien_TrangThai(int matk)
         {
-            dgr_nhanvien_trangthai.DataSource = taiKhoanController.showNhanVien_TrangThai(matk);
+            dgr_nhanvien_trangthai.DataSource = taiKhoanBUS.showNhanVien_TrangThai(matk);
         }
         private void label3_Click(object sender, EventArgs e)
         {
@@ -108,7 +108,7 @@ namespace PMQLBanHang.Views
             taiKhoan = getTaiKhoanFromInfo();
             if (checkInfo(taiKhoan))
             {
-                if (taiKhoanController.addAccount(taiKhoan) == 2)// thêm tài khoản nhớ thay đổi cả trạng thái ở bảng nhân viên
+                if (taiKhoanBUS.addAccount(taiKhoan) == 2)// thêm tài khoản nhớ thay đổi cả trạng thái ở bảng nhân viên
                 {// bằng 2 vì 2 dòng bị ảnh hưởng
                     MessageBox.Show("Thêm Thành Công!", "Thông Báo !");
                     RefreshFrm();
@@ -182,7 +182,7 @@ namespace PMQLBanHang.Views
             taikhoan = getTaiKhoanFromInfo();
             if (MessageBox.Show("Bạn có thật sự muốn xóa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                if (taiKhoanController.deleteAccount(taikhoan) ==2)
+                if (taiKhoanBUS.deleteAccount(taikhoan) ==2)
                 {
                     RefreshFrm();
                     MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -220,7 +220,7 @@ namespace PMQLBanHang.Views
             {
                 if (MessageBox.Show("Bạn có thật sự muốn thay đổi không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (taiKhoanController.updateAccount(taikhoan) == 1)
+                    if (taiKhoanBUS.updateAccount(taikhoan) == 1)
                     {
                         RefreshFrm();
                         MessageBox.Show("Cập Nhật Thành Công!", "Thông Báo !");

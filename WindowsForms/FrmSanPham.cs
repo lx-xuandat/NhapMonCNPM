@@ -1,5 +1,5 @@
-﻿using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+﻿using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,8 +22,8 @@ namespace PMQLBanHang.Views
             get { return matk; }
             set { matk = value; }
         }
-        QuanLyController quanLyController = new QuanLyController();
-        SanPhamController sanPhamController = new SanPhamController();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
+        SanPhamBUS sanPhamBUS = new SanPhamBUS();
         public FrmSanPham()
         {
             InitializeComponent();
@@ -31,14 +31,14 @@ namespace PMQLBanHang.Views
 
         private void FrmSanPham_Load(object sender, EventArgs e)
         {
-            lbnguoidung.Text = quanLyController.getUserName(matk);
+            lbnguoidung.Text = quanLyBUS.getUserName(matk);
             showSP();
             initComponents();
         }
 
         private void showSP()
         {
-            dgr_sanpham.DataSource = sanPhamController.getListSP();
+            dgr_sanpham.DataSource = sanPhamBUS.getListSP();
         }
 
         private void initComponents()
@@ -66,7 +66,7 @@ namespace PMQLBanHang.Views
 
         private List<NCC> getListNCC()
         {
-            List<NCC> ncc = sanPhamController.getListNCC();
+            List<NCC> ncc = sanPhamBUS.getListNCC();
             return ncc;
         }
 
@@ -90,7 +90,7 @@ namespace PMQLBanHang.Views
                 {
                     SanPham sanPham = new SanPham();
                     sanPham = getSanPhamFromFrm();
-                    if (sanPhamController.addSanPham(sanPham) && saveImage())
+                    if (sanPhamBUS.addSanPham(sanPham) && saveImage())
                     {
                         refreshFrm();
                         MessageBox.Show("Cập Nhật Thành Công !", "Thông Báo !");
@@ -208,7 +208,7 @@ namespace PMQLBanHang.Views
         }
         private List<LoaiSanPham> getListLoaiSP()
         {
-            List<LoaiSanPham> loaiSanPhams = sanPhamController.getListLoaiSP();
+            List<LoaiSanPham> loaiSanPhams = sanPhamBUS.getListLoaiSP();
             return loaiSanPhams;
         }
 
@@ -220,7 +220,7 @@ namespace PMQLBanHang.Views
                 {
                     SanPham sanPham = new SanPham();
                     sanPham = getSanPhamFromFrm();
-                    if (sanPhamController.updateSanPham(sanPham) && saveImage())
+                    if (sanPhamBUS.updateSanPham(sanPham) && saveImage())
                     {
                         refreshFrm();
                         MessageBox.Show("Cập Nhật Thành Công !", "Thông Báo !");
@@ -297,7 +297,7 @@ namespace PMQLBanHang.Views
                 {
                     SanPham sanPham = new SanPham();
                     sanPham = getSanPhamFromFrm();
-                    if (sanPhamController.deleteSanPham(sanPham) && deleteImage())
+                    if (sanPhamBUS.deleteSanPham(sanPham) && deleteImage())
                     {
                         refreshFrm();
                         MessageBox.Show("Xóa Thành Công!", "Thông Báo !");

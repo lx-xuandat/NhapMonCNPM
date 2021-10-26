@@ -1,4 +1,4 @@
-﻿using PMQLBanHang.Controllers;
+﻿using PMQLBanHang.BUS;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,8 +27,8 @@ namespace PMQLBanHang.Views
         private void FrmQuanLy_Load(object sender, EventArgs e)
         {
             
-            QuanLyController quanLyController = new QuanLyController();
-            labelName.Text=quanLyController.getUserName(matk);
+            QuanLyBUS quanLyBUS = new QuanLyBUS();
+            labelName.Text=quanLyBUS.getUserName(matk);
         }
 
         private void btn_QLNhanVien_Click(object sender, EventArgs e)

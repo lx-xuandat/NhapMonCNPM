@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PMQLBanHang.Controllers
+namespace PMQLBanHang.BUS
 {
-    class QuanLyController
+    class QuanLyBUS
     {
         ConnectDB connectDB = new ConnectDB();
         public string getUserName(int matk)

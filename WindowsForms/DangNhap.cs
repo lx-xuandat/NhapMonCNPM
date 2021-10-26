@@ -1,6 +1,6 @@
 ﻿
-using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using PMQLBanHang.Views;
 using System;
 using System.Collections.Generic;
@@ -42,7 +42,7 @@ namespace PMQLBanHang
                 {
                     string tendangnhap = txtTenDangNhap.Text;
                     string matkhau = txtMatKhau.Text;
-                    LoginController checklogin = new LoginController();
+                    LoginBUS checklogin = new LoginBUS();
                     DataTable data = checklogin.checklogin(tendangnhap, matkhau);
                     if (data.Rows.Count > 0)
                     {

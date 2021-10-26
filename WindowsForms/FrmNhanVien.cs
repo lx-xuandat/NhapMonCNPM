@@ -1,5 +1,5 @@
-﻿using PMQLBanHang.Controllers;
-using PMQLBanHang.Models;
+﻿using PMQLBanHang.BUS;
+using PMQLBanHang.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,8 +21,8 @@ namespace PMQLBanHang.Views
             get { return matk; }
             set { matk = value; }
         }
-        NhanVienController nhanVienController = new NhanVienController();
-        QuanLyController quanLyController = new QuanLyController();
+        NhanVienBUS nhanVienBUS = new NhanVienBUS();
+        QuanLyBUS quanLyBUS = new QuanLyBUS();
         public FrmNhanVien()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace PMQLBanHang.Views
         private void FrmNhanVien_Load(object sender, EventArgs e)
         {
            
-            LabelUser.Text = quanLyController.getUserName(matk);
+            LabelUser.Text = quanLyBUS.getUserName(matk);
             showNV(matk);
             initComponents();
         }
@@ -43,7 +43,7 @@ namespace PMQLBanHang.Views
             rdFemale.Checked = true;
             txtAddress.Text = "";
             txtPhone.Text = "";
-            //List<string> arrChucVu = nhanVienController.getListChucVu_by_MaTK(matk);
+            //List<string> arrChucVu = nhanVienBUS.getListChucVu_by_MaTK(matk);
             //cbChucVu.DataSource=arrChucVu;
             txtTrangThai.Text = "";
             dtpBirthday.Value = DateTime.Today;
@@ -62,12 +62,12 @@ namespace PMQLBanHang.Views
         private int getMaxMaNV()
         {
            
-            return nhanVienController.getMaxMaNV()+1;
+            return nhanVienBUS.getMaxMaNV()+1;
         }
 
         private void showNV(int matk)
         {
-            dgr_NhanVien.DataSource =  nhanVienController.getListNV();
+            dgr_NhanVien.DataSource =  nhanVienBUS.getListNV();
         }
 
         private void dgr_NhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -140,7 +140,7 @@ namespace PMQLBanHang.Views
             if (isFullInfo(nhanvien))
             {
                 // thêm nhân viên
-                if (nhanVienController.addNhanVien(nhanvien))
+                if (nhanVienBUS.addNhanVien(nhanvien))
                 {
                     RefreshFrm();
                     MessageBox.Show("Thêm Thành Công!","Thông Báo !");
@@ -169,7 +169,7 @@ namespace PMQLBanHang.Views
 
         private void RefreshFrm()
         {
-            LabelUser.Text = quanLyController.getUserName(matk);
+            LabelUser.Text = quanLyBUS.getUserName(matk);
             showNV(matk);
             initComponents();
         }
@@ -214,7 +214,7 @@ namespace PMQLBanHang.Views
             {
                 if (MessageBox.Show("Bạn có thật sự muốn sửa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (nhanVienController.updateNhanVien(nhanvien))
+                    if (nhanVienBUS.updateNhanVien(nhanvien))
                     {
                         RefreshFrm();
                         MessageBox.Show("Sửa Thành Công!", "Thông Báo !");
@@ -234,7 +234,7 @@ namespace PMQLBanHang.Views
             nhanvien = getNhanVienFromInfo();
                 if (MessageBox.Show("Bạn có thật sự muốn xóa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    if (nhanVienController.deleteNhanVien(nhanvien))
+                    if (nhanVienBUS.deleteNhanVien(nhanvien))
                     {
                         RefreshFrm();
                         MessageBox.Show("Xóa Thành Công!", "Thông Báo !");
@@ -261,7 +261,7 @@ namespace PMQLBanHang.Views
 
         private void showNhanVienSearch(string t, int matk)
         {
-            dgr_NhanVien.DataSource = nhanVienController.getListNVSearch(t, matk);
+            dgr_NhanVien.DataSource = nhanVienBUS.getListNVSearch(t, matk);
         }
 
         private void btn_Search_Click(object sender, EventArgs e)
