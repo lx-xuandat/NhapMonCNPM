@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.txtTrangThai = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -67,7 +68,6 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.LabelUser = new System.Windows.Forms.Label();
-            this.txtTrangThai = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgr_NhanVien)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -94,10 +94,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(224, 22);
+            this.label1.Size = new System.Drawing.Size(229, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Chức Năng Quản Lý Nhân Viên";
             // 
@@ -125,6 +125,14 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(278, 31);
             this.panel9.TabIndex = 8;
+            // 
+            // txtTrangThai
+            // 
+            this.txtTrangThai.Enabled = false;
+            this.txtTrangThai.Location = new System.Drawing.Point(103, 6);
+            this.txtTrangThai.Name = "txtTrangThai";
+            this.txtTrangThai.Size = new System.Drawing.Size(157, 20);
+            this.txtTrangThai.TabIndex = 2;
             // 
             // label10
             // 
@@ -319,6 +327,7 @@
             this.txtMaNV.Enabled = false;
             this.txtMaNV.Location = new System.Drawing.Point(68, 6);
             this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.ReadOnly = true;
             this.txtMaNV.Size = new System.Drawing.Size(192, 20);
             this.txtMaNV.TabIndex = 1;
             // 
@@ -334,10 +343,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(87, 13);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 18);
+            this.label2.Size = new System.Drawing.Size(153, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Thông Tin Nhân Viên";
             // 
@@ -414,11 +423,11 @@
             // 
             // txt_Serach
             // 
-            this.txt_Serach.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_Serach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_Serach.ForeColor = System.Drawing.SystemColors.InfoText;
             this.txt_Serach.Location = new System.Drawing.Point(54, 43);
             this.txt_Serach.Name = "txt_Serach";
-            this.txt_Serach.Size = new System.Drawing.Size(365, 25);
+            this.txt_Serach.Size = new System.Drawing.Size(365, 22);
             this.txt_Serach.TabIndex = 6;
             this.txt_Serach.TextChanged += new System.EventHandler(this.txt_Serach_TextChanged);
             this.txt_Serach.Enter += new System.EventHandler(this.txt_Serach_Enter);
@@ -451,14 +460,6 @@
             this.LabelUser.Size = new System.Drawing.Size(86, 13);
             this.LabelUser.TabIndex = 9;
             this.LabelUser.Text = "Tên Người Dùng";
-            // 
-            // txtTrangThai
-            // 
-            this.txtTrangThai.Enabled = false;
-            this.txtTrangThai.Location = new System.Drawing.Point(103, 6);
-            this.txtTrangThai.Name = "txtTrangThai";
-            this.txtTrangThai.Size = new System.Drawing.Size(157, 20);
-            this.txtTrangThai.TabIndex = 2;
             // 
             // FrmNhanVien
             // 

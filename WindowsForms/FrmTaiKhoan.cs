@@ -51,6 +51,7 @@ namespace PMQLBanHang.Views
             btn_Them.Enabled = true;
             btn_Xoa.Enabled = false;
             btn_update.Enabled = false;
+            cbNhanVien.Enabled = true;
         }
 
 
@@ -80,6 +81,7 @@ namespace PMQLBanHang.Views
                 btn_Them.Enabled = false;
                 btn_Xoa.Enabled = true;
                 btn_update.Enabled = true;
+                cbNhanVien.Enabled = false;
             }
             else
             {
@@ -108,6 +110,7 @@ namespace PMQLBanHang.Views
             taiKhoan = getTaiKhoanFromInfo();
             if (checkInfo(taiKhoan))
             {
+                if (!validateTaiKhoan(taiKhoan)) return;
                 if (taiKhoanBUS.addAccount(taiKhoan) == 2)// thêm tài khoản nhớ thay đổi cả trạng thái ở bảng nhân viên
                 {// bằng 2 vì 2 dòng bị ảnh hưởng
                     MessageBox.Show("Thêm Thành Công!", "Thông Báo !");
@@ -119,6 +122,22 @@ namespace PMQLBanHang.Views
                 }
 
             }
+        }
+
+        private bool validateTaiKhoan(TaiKhoan taikhoan)
+        {
+            bool taikhoanhople = (taikhoan.Tendangnhap.All(char.IsLetterOrDigit) && taikhoan.Tendangnhap.Length>=4);
+            if (!taikhoanhople)
+            {
+                MessageBox.Show("Tài khoản chứa ít nhất 4 kí tự là chữ hoặc số!", "Thông Báo !");
+                return false;
+            };
+            if (taikhoan.Matkhau.Length<6)
+            {
+                MessageBox.Show("Mật khẩu tối thiểu 6 kí tự!", "Thông Báo !");
+                return false;
+            };
+            return true;
         }
 
         private int getMaLoaiTKFromCV(object value)
@@ -146,15 +165,21 @@ namespace PMQLBanHang.Views
             }
             else if (taikhoan.Matkhau.Trim().Length ==0)
             {
-                MessageBox.Show("Mật khẩu không được để tróng !", "Thông Báo !");
+                MessageBox.Show("Mật khẩu không được để trống !", "Thông Báo !");
                 isPattern = false;
             }
             else if (ckbAnHien.Checked != true)
             {
+                if (txtXacNhan.Text.Length == 0)
+                {
+                    isPattern = false;
+                    MessageBox.Show("Mật khẩu xác nhận không được bỏ trống!", "Thông Báo !");
+                    return false;
+                }
                 if (!taikhoan.Matkhau.Equals(txtXacNhan.Text))
                 {
                     isPattern = false;
-                    MessageBox.Show(" mật khẩu xác nhận không giống nhau!", "Thông Báo !");
+                    MessageBox.Show("Nhập lại mật khẩu không đúng!", "Thông Báo !");
                 }
             }
             return isPattern;
@@ -218,6 +243,7 @@ namespace PMQLBanHang.Views
             taikhoan = getTaiKhoanFromInfo();
             if (checkInfo(taikhoan))
             {
+                if (!validateTaiKhoan(taikhoan)) return;
                 if (MessageBox.Show("Bạn có thật sự muốn thay đổi không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     if (taiKhoanBUS.updateAccount(taikhoan) == 1)
@@ -237,6 +263,11 @@ namespace PMQLBanHang.Views
         private void label9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbNhanVien_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
     }
 }

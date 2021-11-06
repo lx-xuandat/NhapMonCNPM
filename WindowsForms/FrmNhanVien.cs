@@ -139,11 +139,13 @@ namespace PMQLBanHang.Views
             nhanvien = getNhanVienFromInfo();
             if (isFullInfo(nhanvien))
             {
+                if (!validteNhanVien(nhanvien)) return;
                 // thêm nhân viên
                 if (nhanVienBUS.addNhanVien(nhanvien))
                 {
                     RefreshFrm();
-                    MessageBox.Show("Thêm Thành Công!","Thông Báo !");
+                    MessageBox.Show("Thêm Thành Công!", "Thông Báo !");
+                    return;
                 }
             }
             else
@@ -151,6 +153,21 @@ namespace PMQLBanHang.Views
                 MessageBox.Show("Thông Tin Vừa Nhập Không Hợp Lệ !" +
                     "Vui Lòng Xem Lại","Thông Báo");
             }
+        }
+
+        private bool validteNhanVien(NhanVien nhanvien)
+        {
+            if (nhanvien.STenNV.Length < 6 || !nhanvien.STenNV.Any(char.IsLetter))
+            {
+                MessageBox.Show("Tên nhân viên là chữ và dài hơn 6 kí tự!", "Thông Báo !");
+                return false;
+            }
+            if (nhanvien.SSoDienThoai.Length < 10 || !nhanvien.STenNV.Any(char.IsDigit))
+            {
+                MessageBox.Show("Số điện thoại tối thiểu 10  và là số!", "Thông Báo !");
+                return false;
+            }
+            return true;
         }
 
         private NhanVien getNhanVienFromInfo()
@@ -212,6 +229,7 @@ namespace PMQLBanHang.Views
             nhanvien = getNhanVienFromInfo();
             if (isFullInfo(nhanvien))
             {
+                if (!validteNhanVien(nhanvien)) return;
                 if (MessageBox.Show("Bạn có thật sự muốn sửa không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
                     if (nhanVienBUS.updateNhanVien(nhanvien))

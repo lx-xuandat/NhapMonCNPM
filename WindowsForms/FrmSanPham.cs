@@ -86,17 +86,31 @@ namespace PMQLBanHang.Views
         {
             if (isFullInfo())
             {
+                SanPham sanPham = new SanPham();
+                sanPham = getSanPhamFromFrm();
+                if (!validateSanPham(sanPham)) return;
                 if (MessageBox.Show("Bạn có thật sự muốn thêm không!", "Thông Báo!", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
                 {
-                    SanPham sanPham = new SanPham();
-                    sanPham = getSanPhamFromFrm();
                     if (sanPhamBUS.addSanPham(sanPham) && saveImage())
                     {
                         refreshFrm();
-                        MessageBox.Show("Cập Nhật Thành Công !", "Thông Báo !");
+                        MessageBox.Show("Thêm Thành Công !", "Thông Báo !");
                     }
                 }
             }
+        }
+
+        private bool validateSanPham(SanPham sanPham)
+        {
+            if (!sanPham.Tensp.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)) || sanPham.Tensp.Length<=4)
+            {
+                MessageBox.Show("Tên sản phẩm tối thiểu 4 kí tự là chữ!", "Thông Báo !"); return false;
+            }
+            if (sanPham.Hsd.CompareTo(sanPham.Nsx)<=0)
+            {
+                MessageBox.Show("Hạn sử dụng phải lớn hơn ngày sản xuất!", "Thông Báo !"); return false;
+            }
+            return true;
         }
 
         private void addSanPham()
@@ -220,6 +234,7 @@ namespace PMQLBanHang.Views
                 {
                     SanPham sanPham = new SanPham();
                     sanPham = getSanPhamFromFrm();
+                    if (!validateSanPham(sanPham)) return;
                     if (sanPhamBUS.updateSanPham(sanPham) && saveImage())
                     {
                         refreshFrm();
@@ -235,14 +250,15 @@ namespace PMQLBanHang.Views
             {
                 MessageBox.Show("Tên Sản Phẩm Không được để trống!", "Thông Báo !"); return false;
             }
-            else if (txtSoluong.Text.Length == 0)
+            if (txtSoluong.Text.Length == 0)
             {
-                MessageBox.Show("Hãy Nhập số lượng !", "Thông Báo !"); return false;
+                MessageBox.Show("Hãy Nhập số lượng!", "Thông Báo !"); return false;
             }
-            else
+            if (txtGia.Text.Length <=0)
             {
-                return true;
+                MessageBox.Show("Hãy Nhập giá!", "Thông Báo !"); return false;
             }
+            return true;
         }
 
         private void refreshFrm()
@@ -254,7 +270,7 @@ namespace PMQLBanHang.Views
         private SanPham getSanPhamFromFrm()
         {
             SanPham san = new SanPham();
-            san.Masp = Convert.ToInt32(lbMaSp.Text);
+            san.Masp = lbMaSp.Text.All(char.IsDigit)?Convert.ToInt32(lbMaSp.Text):-1;
             san.Tensp = txt_tensp.Text;
             san.Maloaisp = Convert.ToInt32(cbLoaiSP.SelectedValue);
             // MessageBox.Show(cbLoaiSP.SelectedValue + "");
@@ -310,5 +326,14 @@ namespace PMQLBanHang.Views
             }
         }
 
+        private void dtpHSD_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbTenNcc_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
     }
 }

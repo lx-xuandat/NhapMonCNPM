@@ -213,6 +213,7 @@
             this.txtXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtXacNhan.Location = new System.Drawing.Point(89, 28);
             this.txtXacNhan.Name = "txtXacNhan";
+            this.txtXacNhan.PasswordChar = '*';
             this.txtXacNhan.Size = new System.Drawing.Size(185, 22);
             this.txtXacNhan.TabIndex = 1;
             // 
@@ -283,6 +284,7 @@
             this.cbNhanVien.Name = "cbNhanVien";
             this.cbNhanVien.Size = new System.Drawing.Size(185, 24);
             this.cbNhanVien.TabIndex = 1;
+            this.cbNhanVien.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbNhanVien_KeyPress);
             // 
             // label5
             // 
