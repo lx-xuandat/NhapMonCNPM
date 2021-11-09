@@ -29,8 +29,6 @@ namespace PMQLBanHang.Views
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.cbThanhToan = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cbNhanVien = new System.Windows.Forms.ComboBox();
@@ -66,33 +64,14 @@ namespace PMQLBanHang.Views
             ((System.ComponentModel.ISupportInitialize)(this.dgr_hoadonban)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(490, 441);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 35);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Thống Kê Tiền Bán";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // cbThanhToan
-            // 
-            this.cbThanhToan.FormattingEnabled = true;
-            this.cbThanhToan.Location = new System.Drawing.Point(644, 407);
-            this.cbThanhToan.Name = "cbThanhToan";
-            this.cbThanhToan.Size = new System.Drawing.Size(129, 21);
-            this.cbThanhToan.TabIndex = 29;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(549, 412);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(74, 16);
+            this.label11.Size = new System.Drawing.Size(0, 16);
             this.label11.TabIndex = 28;
-            this.label11.Text = "Hình Thức :";
             // 
             // label10
             // 
@@ -100,9 +79,9 @@ namespace PMQLBanHang.Views
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(334, 28);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(245, 20);
+            this.label10.Size = new System.Drawing.Size(236, 20);
             this.label10.TabIndex = 27;
-            this.label10.Text = "Quản Lý Hóa Bán Nhập Hàng";
+            this.label10.Text = "Quản Lý Hóa Đơn Bán Hàng";
             // 
             // cbNhanVien
             // 
@@ -348,8 +327,6 @@ namespace PMQLBanHang.Views
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(907, 503);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.cbThanhToan);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btn_Detail);
@@ -366,7 +343,7 @@ namespace PMQLBanHang.Views
             this.Controls.Add(this.dgr_hoadonban);
             this.Name = "FrmHoaDonBan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quản Lý Hóa Đơn Hóa Đơn Bán";
+            this.Text = "Quản Lý  Hóa Đơn Bán";
             this.Load += new System.EventHandler(this.FrmHoaDonBan_Load);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -384,9 +361,6 @@ namespace PMQLBanHang.Views
         }
 
         #endregion
-
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox cbThanhToan;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cbNhanVien;

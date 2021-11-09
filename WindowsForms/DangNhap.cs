@@ -65,14 +65,14 @@ namespace PMQLBanHang
                                 frmHoaDonBan.ShowDialog();
                                 this.Show();
                                 break;
-                            case 4:
-                                MessageBox.Show("Bạn Đăng Nhập Quyền Kho", "Thông Báo!");
-                                this.Hide();
-                                FrmHoaDonNhap frmHoaDonNhap = new FrmHoaDonNhap();
-                                frmHoaDonNhap.Message = getMaTK(row);
-                                frmHoaDonNhap.ShowDialog();
-                                this.Show();
-                                break;
+                            //case 4:
+                            //    MessageBox.Show("Bạn Đăng Nhập Quyền Kho", "Thông Báo!");
+                            //    this.Hide();
+                            //    FrmHoaDonNhap frmHoaDonNhap = new FrmHoaDonNhap();
+                            //    frmHoaDonNhap.Message = getMaTK(row);
+                            //    frmHoaDonNhap.ShowDialog();
+                            //    this.Show();
+                            //    break;
                         }
 
                     }

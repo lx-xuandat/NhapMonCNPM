@@ -86,23 +86,11 @@
     <Compile Include="WindowsForms\FrmChiTietHoaDonBan.Designer.cs">
       <DependentUpon>FrmChiTietHoaDonBan.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowsForms\FrmChiTietHoaDonNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WindowsForms\FrmChiTietHoaDonNhap.Designer.cs">
-      <DependentUpon>FrmChiTietHoaDonNhap.cs</DependentUpon>
-    </Compile>
     <Compile Include="WindowsForms\FrmHoaDonBan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="WindowsForms\FrmHoaDonBan.Designer.cs">
       <DependentUpon>FrmHoaDonBan.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WindowsForms\FrmHoaDonNhap.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WindowsForms\FrmHoaDonNhap.Designer.cs">
-      <DependentUpon>FrmHoaDonNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="WindowsForms\FrmNhanVien.cs">
       <SubType>Form</SubType>
@@ -144,14 +132,8 @@
     <EmbeddedResource Include="WindowsForms\FrmChiTietHoaDonBan.resx">
       <DependentUpon>FrmChiTietHoaDonBan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\FrmChiTietHoaDonNhap.resx">
-      <DependentUpon>FrmChiTietHoaDonNhap.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\FrmHoaDonBan.resx">
       <DependentUpon>FrmHoaDonBan.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WindowsForms\FrmHoaDonNhap.resx">
-      <DependentUpon>FrmHoaDonNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WindowsForms\FrmNhanVien.resx">
       <DependentUpon>FrmNhanVien.cs</DependentUpon>

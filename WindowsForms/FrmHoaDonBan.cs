@@ -76,7 +76,7 @@ namespace PMQLBanHang.Views
             banhang.Mahd = maHDSelected;
             banhang.Manv = Convert.ToInt32(cbNhanVien.SelectedValue);
             banhang.Ngaylap = dtpLap.Value;
-            banhang.Tongtien = Convert.ToInt32(txtTongtien.Text);
+            banhang.Tongtien = Convert.ToInt32(-1);
             return banhang;
         }
 
@@ -287,6 +287,9 @@ namespace PMQLBanHang.Views
 
         }
 
-        
+        private void cbThanhToan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

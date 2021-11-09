@@ -37,7 +37,6 @@
             this.cbChucVu = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_BaoCao = new System.Windows.Forms.Button();
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_update = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
@@ -151,27 +150,17 @@
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.btn_BaoCao);
             this.panel6.Controls.Add(this.btn_Xoa);
             this.panel6.Controls.Add(this.btn_update);
             this.panel6.Controls.Add(this.btn_Them);
             this.panel6.Location = new System.Drawing.Point(3, 239);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(293, 123);
+            this.panel6.Size = new System.Drawing.Size(326, 123);
             this.panel6.TabIndex = 5;
-            // 
-            // btn_BaoCao
-            // 
-            this.btn_BaoCao.Location = new System.Drawing.Point(186, 73);
-            this.btn_BaoCao.Name = "btn_BaoCao";
-            this.btn_BaoCao.Size = new System.Drawing.Size(88, 47);
-            this.btn_BaoCao.TabIndex = 3;
-            this.btn_BaoCao.Text = "Báo Cáo";
-            this.btn_BaoCao.UseVisualStyleBackColor = true;
             // 
             // btn_Xoa
             // 
-            this.btn_Xoa.Location = new System.Drawing.Point(15, 73);
+            this.btn_Xoa.Location = new System.Drawing.Point(114, 36);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(93, 47);
             this.btn_Xoa.TabIndex = 2;
@@ -181,7 +170,7 @@
             // 
             // btn_update
             // 
-            this.btn_update.Location = new System.Drawing.Point(186, 15);
+            this.btn_update.Location = new System.Drawing.Point(231, 33);
             this.btn_update.Name = "btn_update";
             this.btn_update.Size = new System.Drawing.Size(92, 52);
             this.btn_update.TabIndex = 1;
@@ -191,7 +180,7 @@
             // 
             // btn_Them
             // 
-            this.btn_Them.Location = new System.Drawing.Point(15, 15);
+            this.btn_Them.Location = new System.Drawing.Point(6, 33);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(93, 52);
             this.btn_Them.TabIndex = 0;
@@ -396,7 +385,6 @@
         private System.Windows.Forms.Panel lbMaNV;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button btn_BaoCao;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_update;
         private System.Windows.Forms.Button btn_Them;
