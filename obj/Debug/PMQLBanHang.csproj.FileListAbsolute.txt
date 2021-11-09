@@ -70,9 +70,7 @@ D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.csprojAssemblyReference.cache
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.DangNhap.resources
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Properties.Resources.resources
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmChiTietHoaDonBan.resources
-D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmChiTietHoaDonBanHang.resources
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmHoaDonBan.resources
-D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmHoaDonNhap.resources
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmNhanVien.resources
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmQuanLy.resources
 D:\ST4_CNPM\NhapMonCNPM\obj\Debug\PMQLBanHang.Views.FrmSanPham.resources
