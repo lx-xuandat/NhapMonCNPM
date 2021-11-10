@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace PMQLBanHang.BUS
 {
-    class NhanVienBUS
+    public class NhanVienBUS
     {
         ConnectDB connectDB = new ConnectDB();
         internal DataTable getListNV()
@@ -62,7 +62,7 @@ namespace PMQLBanHang.BUS
             return result;
         }
 
-        internal bool addNhanVien(NhanVien nhanvien)
+        public bool addNhanVien(NhanVien nhanvien)
         {
             //create proc sp_them_NhanVien @ten nvarchar(100),@gioitinh int, @quequan nvarchar(100),@ngaysinh date, @ngayvaolam date,@sdt varchar(20)
             //as

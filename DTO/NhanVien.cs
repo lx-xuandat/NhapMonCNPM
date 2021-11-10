@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PMQLBanHang.DTO
 {
-    class NhanVien
+    public class NhanVien
     {
 		//		create table tblNhanVien(
 		//iMaNV int identity(1,1) primary key(iMaNV),
